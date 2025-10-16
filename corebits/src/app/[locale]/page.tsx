@@ -7,6 +7,7 @@ import { Metadata } from 'next';
 import type { Locale } from '@/types/i18n';
 import NotifyForm from '@/components/NotifyForm';
 import FeaturesGrid from '@/components/FeaturesGrid';
+import FloatingIcons from '@/components/FloatingIcons';
 
 export const revalidate = 3600;
 
@@ -30,7 +31,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
     <div>
       <LandingNavbar />
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-        <section id="home" className="grid md:grid-cols-2 items-center gap-10 py-12">
+        <section id="home" className="grid md:grid-cols-2 items-center gap-10 py-12 relative">
           <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-[#004B87] to-[#FFD700] bg-clip-text text-transparent">
             {dict.hero.headline}
           </h1>
@@ -48,7 +49,9 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
               <Timer target="2025-12-15T00:00:00+08:00" label={dict.countdown.label} />
             </div>
           </div>
-          <div className="h-64 bg-white rounded-2xl shadow-sm border border-black/10 hidden md:block" />
+          <div className="h-64 bg-white rounded-2xl shadow-sm border border-black/10 hidden md:block relative overflow-hidden">
+            <FloatingIcons />
+          </div>
         </section>
 
         <section id="about">
