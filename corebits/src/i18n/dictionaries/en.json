@@ -1,0 +1,74 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "legal": "Legal",
+    "certificates": "Certificates",
+    "announcements": "Announcements",
+    "contact": "Contact"
+  },
+  "hero": {
+    "headline": "Powering the Future, One Bit at a Time.",
+    "subheadline": "Malaysia’s Trusted Cloud Mining Agency",
+    "cta": "View Mining Plans"
+  },
+  "countdown": {
+    "label": "Application launches in:"
+  },
+  "features": {
+    "title": "Why CoreBits",
+    "secure": "Secure Cloud Mining",
+    "daily": "Daily Profit Distribution",
+    "registered": "Malaysia Registered Business",
+    "global": "Global Access"
+  },
+  "testimonials": {
+    "title": "What Clients Say"
+  },
+  "notify": {
+    "title": "Get Notified",
+    "placeholder": "Enter your email",
+    "button": "Notify Me",
+    "success": "Thanks! We will keep you posted."
+  },
+  "footer": {
+    "made": "Made with 💠 in Malaysia",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "kyc": "KYC Policy"
+  },
+  "about": {
+    "title": "Who We Are",
+    "mission": "Our Mission",
+    "values": "Our Values",
+    "transparency": "Transparency",
+    "security": "Security",
+    "efficiency": "Efficiency",
+    "global": "Global Accessibility"
+  },
+  "legal": {
+    "title": "Our Legal Standing",
+    "text": "CoreBits operates transparently and is registered under Malaysian regulations.",
+    "certs": "Business Certificates",
+    "download": "Download",
+    "reports": "Transparency Reports",
+    "date": "Date",
+    "description": "Description",
+    "walletProofs": "Wallet Proofs"
+  },
+  "announcements": {
+    "title": "CoreBits Official Updates",
+    "comingSoon": "Mining app coming soon"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "submit": "Send Message",
+    "visit": "Visit Our Office",
+    "address": "Kuala Lumpur, Malaysia",
+    "follow": "Follow Us"
+  }
+}
+
