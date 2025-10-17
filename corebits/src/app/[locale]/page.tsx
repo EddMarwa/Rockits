@@ -70,7 +70,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
               { name: 'Elite Rig', price: '$700', ths: '50 TH/s', profit: '5–6% daily', duration: '90 Days' }
             ].map((p) => (
               <div key={p.name} className="rounded-2xl p-[2px] bg-gradient-to-r from-[#004B87] to-[#FFD700]">
-                <div className="rounded-2xl bg-white p-6 h-full flex flex-col shadow-sm">
+                <div className="rounded-2xl bg-white dark:bg-slate-900 text-black dark:text-white p-6 h-full flex flex-col shadow-sm">
                   <div className="text-sm opacity-70">{p.name}</div>
                   <div className="text-3xl font-bold mt-1">{p.price}</div>
                   <ul className="mt-4 space-y-1 text-sm">
