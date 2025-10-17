@@ -22,12 +22,12 @@ export default function TransparencyLegal({ locale }: { locale: Locale }) {
       <div className="grid md:grid-cols-2 gap-8">
         <div>
           <h2 className="text-2xl font-semibold mb-2">Our Commitment to Transparency</h2>
-          <p className="opacity-80">CoreBits operates under Malaysian law and shares its official documents, certificates, and mining performance data publicly.</p>
+          <p className="opacity-80">CoreBits operates under Singapore law and shares its official documents, certificates, and mining performance data publicly.</p>
           <Link href={`/${locale}/certificates`} className="mt-4 inline-block rounded-lg border border-white/15 px-4 py-2 hover:bg-white/5">View Certificates</Link>
         </div>
         <div>
           <h3 className="text-xl font-medium mb-2">Our Legal Standing</h3>
-          <p className="opacity-80">CoreBits operates transparently and is registered under Malaysian regulations.</p>
+          <p className="opacity-80">CoreBits operates transparently and is registered under Singapore regulations.</p>
         </div>
       </div>
 

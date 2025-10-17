@@ -73,7 +73,7 @@ export default async function Home() {
         <section id="partners" className="mt-16">
           <h2 className="text-2xl font-semibold mb-4">Supported Platforms</h2>
           <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
-            {['binance','okx','bybit','tron','ethereum','bitcoin'].map((n) => (
+            {['binance','okx','bybit','coinbase','kucoin','bitget','bitfinex','kraken','tron','ethereum','bitcoin'].map((n) => (
               <a key={n} href="#" className="h-14 rounded-lg border border-white/10 bg-[#1E293B] flex items-center justify-center hover:border-[#EAB308]/40 transition">
                 <span className="sr-only">{n} logo</span>
                 <Image src={`/images/partners/${n}.svg`} alt="" width={96} height={24} className="opacity-80" />
