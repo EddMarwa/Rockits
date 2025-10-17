@@ -1,4 +1,4 @@
-import Navbar from '@/components/Navbar';
+import LandingNavbar from '@/components/LandingNavbar';
 import Footer from '@/components/Footer';
 import { getDictionary } from '@/i18n';
 import type { Locale } from '@/types/i18n';
@@ -9,7 +9,7 @@ export default async function Contact({ params }: { params: Promise<{ locale: Lo
   const dict = await getDictionary(locale);
   return (
     <div>
-      <Navbar dict={dict} locale={locale} />
+      <LandingNavbar />
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <h1 className="text-3xl font-semibold mb-6">{dict.contact.title}</h1>
         <div className="grid md:grid-cols-3 gap-8">

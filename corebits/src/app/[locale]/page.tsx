@@ -8,6 +8,8 @@ import type { Locale } from '@/types/i18n';
 import NotifyForm from '@/components/NotifyForm';
 import FeaturesGrid from '@/components/FeaturesGrid';
 import FloatingIcons from '@/components/FloatingIcons';
+import TransparencyLegal from '@/components/TransparencyLegal';
+import Image from 'next/image';
 
 export const revalidate = 3600;
 
@@ -86,19 +88,17 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
         <section id="partners" className="mt-16">
           <h2 className="text-2xl font-semibold mb-4">Supported Platforms</h2>
           <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
+            {/* TODO: Add platform logos in /public/images/partners/ */}
             {['binance','okx','bybit','tron','ethereum','bitcoin'].map((n) => (
-              <div key={n} className="h-14 rounded-lg border border-black/10 bg-white flex items-center justify-center text-sm opacity-70">
-                {n.toUpperCase()}
-              </div>
+              <a key={n} href="#" className="h-14 rounded-lg border border-white/10 bg-[#1E293B] flex items-center justify-center hover:border-[#EAB308]/40 transition">
+                <span className="sr-only">{n} logo</span>
+                <Image src={`/images/partners/${n}.svg`} alt="" width={96} height={24} className="opacity-80" />
+              </a>
             ))}
           </div>
         </section>
 
-        <section id="certs" className="mt-16">
-          <h2 className="text-2xl font-semibold mb-2">Our Commitment to Transparency</h2>
-          <p className="opacity-80">CoreBits operates under Malaysian law and shares its certificates publicly.</p>
-          <a href={`/${locale}/legal`} className="mt-4 inline-block rounded-lg border px-4 py-2 hover:bg-black/5">View Certificates</a>
-        </section>
+        <TransparencyLegal locale={locale} />
 
         <section id="news" className="mt-16">
           <h2 className="text-2xl font-semibold mb-4">Latest Updates</h2>

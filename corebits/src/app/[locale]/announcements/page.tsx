@@ -1,4 +1,4 @@
-import Navbar from '@/components/Navbar';
+import LandingNavbar from '@/components/LandingNavbar';
 import Footer from '@/components/Footer';
 import { getDictionary } from '@/i18n';
 import type { Locale } from '@/types/i18n';
@@ -13,13 +13,11 @@ export default async function Announcements({ params }: { params: Promise<{ loca
   ];
   return (
     <div>
-      <Navbar dict={dict} locale={locale} />
+      <LandingNavbar />
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <h1 className="text-3xl font-semibold mb-6">{dict.announcements.title}</h1>
         <AnnouncementsTimeline items={items} />
-        <div className="mt-8 rounded border px-4 py-3 text-sm bg-yellow-50 dark:bg-yellow-900/20 border-yellow-200 dark:border-yellow-900">
-          {dict.announcements.comingSoon}
-        </div>
+        <a href={`/${locale}/announcements`} className="mt-6 inline-block rounded-lg border border-white/15 px-4 py-2 hover:bg-white/5">Read All</a>
       </main>
       <Footer dict={dict} />
     </div>
