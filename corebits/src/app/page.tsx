@@ -76,7 +76,7 @@ export default async function Home() {
             {['binance','okx','bybit','coinbase','kucoin','bitget','bitfinex','kraken','tron','ethereum','bitcoin'].map((n) => (
               <a key={n} href="#" className="h-14 rounded-lg border border-white/10 bg-[#1E293B] flex items-center justify-center hover:border-[#EAB308]/40 transition">
                 <span className="sr-only">{n} logo</span>
-                <Image src={`/images/partners/${n}.png`} alt="" width={96} height={24} className="opacity-80" />
+                <Image src={`/images/partners/${n}.png`} alt="" width={96} height={24} className="opacity-80 object-contain w-16 h-8" />
               </a>
             ))}
           </div>
