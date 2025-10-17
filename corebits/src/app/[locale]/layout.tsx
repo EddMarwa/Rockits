@@ -27,7 +27,7 @@ export default async function RootLayout({
   const locale = isSupported ? (rawLocale as Locale) : defaultLocale;
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className={`${poppins.variable} font-sans bg-[#F9FAFB] text-[#1E293B]`}>
+      <body className={`${poppins.variable} font-sans bg-[#0F172A] text-[#F1F5F9]`}>
         {children}
       </body>
     </html>
