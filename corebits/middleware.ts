@@ -23,7 +23,7 @@ export function middleware(request: NextRequest) {
   if (pathnameIsMissingLocale) {
     const url = request.nextUrl.clone();
     url.pathname = `/${defaultLocale}${pathname === '/' ? '' : pathname}`;
-    return NextResponse.redirect(url);
+    return NextResponse.rewrite(url);
   }
 }
 
