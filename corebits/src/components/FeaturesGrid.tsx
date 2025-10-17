@@ -11,8 +11,9 @@ export default function FeaturesGrid({ items }: { items: string[] }) {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: i * 0.05 }}
           viewport={{ once: true }}
-          className="rounded-lg p-5 border bg-white/50 dark:bg-black/30 border-black/10 dark:border-white/10"
+          className="rounded-2xl p-5 border bg-[#1E293B] border-white/10 hover:border-[#EAB308]/40 hover:shadow-[0_0_0_3px_rgba(234,179,8,0.08)] transition"
         >
+          {/* TODO: Optionally add small icon above each feature title */}
           {f}
         </motion.div>
       ))}
