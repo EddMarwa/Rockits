@@ -73,10 +73,19 @@ export default async function Home() {
         <section id="partners" className="mt-16">
           <h2 className="text-2xl font-semibold mb-4">Supported Platforms</h2>
           <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
-            {['Binance','OKX','Bybit','Coinbase','kucoin','Bitfinex','Gate.io','Mexc'].map((n) => (
-              <a key={n} href="#" className="h-16 rounded-lg border border-white/5 bg-[#1E293B] flex items-center justify-center hover:border-[#EAB308]/40 transition">
-                <span className="sr-only">{n} logo</span>
-                <Image src={`/images/partners/${n}.png`} alt="" width={120} height={40} className="opacity-80 object-contain w-20 h-10 max-w-full max-h-full" />
+            {[
+              { name: 'Binance', ext: 'png' },
+              { name: 'OKX', ext: 'png' },
+              { name: 'Bybit', ext: 'png' },
+              { name: 'Coinbase', ext: 'png' },
+              { name: 'kucoin', ext: 'png' },
+              { name: 'Bitfinex', ext: 'jpg' },
+              { name: 'Gate.io', ext: 'png' },
+              { name: 'Mexc', ext: 'png' }
+            ].map(({ name, ext }) => (
+              <a key={name} href="#" className="h-16 rounded-lg border border-white/5 bg-[#1E293B] flex items-center justify-center hover:border-[#EAB308]/40 transition">
+                <span className="sr-only">{name} logo</span>
+                <Image src={`/images/partners/${name}.${ext}`} alt="" width={120} height={40} className="opacity-80 object-contain w-20 h-10 max-w-full max-h-full" />
               </a>
             ))}
           </div>
