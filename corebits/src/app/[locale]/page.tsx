@@ -108,9 +108,9 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
               { date: '2025-10-10', title: 'TRON and BNB Payments Now Supported' },
               { date: '2025-11-05', title: 'Mobile App Beta Coming Soon' }
             ].map((a) => (
-              <div key={a.date} className="rounded-lg p-5 border bg-white border-black/10">
-                <div className="text-xs opacity-70">{a.date}</div>
-                <div className="font-medium">{a.title}</div>
+              <div key={a.date} className="rounded-lg p-5 border bg-white dark:bg-slate-900 border-black/10">
+                <div className="text-xs opacity-70 text-black dark:text-white">{a.date}</div>
+                <div className="font-medium text-black dark:text-white">{a.title}</div>
               </div>
             ))}
           </div>
