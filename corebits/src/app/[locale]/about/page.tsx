@@ -4,23 +4,21 @@ import Link from 'next/link';
 import LandingNavbar from '@/components/LandingNavbar';
 import Footer from '@/components/Footer';
 import WhyChooseCoreBits from '@/components/WhyChooseCoreBits';
-import { getDictionary } from '@/i18n';
-import type { Locale } from '@/types/i18n';
-import { useEffect, useState } from 'react';
-
-export default function About({ params }: { params: Promise<{ locale: Locale }> }) {
-  const [locale, setLocale] = useState<Locale>('en');
-  const [dict, setDict] = useState<any>({});
-
-  useEffect(() => {
-    const initLocale = async () => {
-      const resolvedParams = await params;
-      setLocale(resolvedParams.locale);
-      const dictionary = await getDictionary(resolvedParams.locale);
-      setDict(dictionary);
-    };
-    initLocale();
-  }, [params]);
+export default function About() {
+  const dict = {
+    footer: {
+      made: "Made with ❤️ in Malaysia",
+      terms: "Terms",
+      privacy: "Privacy", 
+      kyc: "KYC"
+    },
+    nav: { home: "Home", about: "About", legal: "Legal", announcements: "Announcements", contact: "Contact" },
+    hero: { headline: "CoreBits", subheadline: "Cloud Mining Agency", cta: "Get Started" },
+    countdown: { label: "Launch Countdown" },
+    features: { secure: "Secure", daily: "Daily", registered: "Registered", global: "Global" },
+    notify: { title: "Stay Updated" },
+    about: { title: "About", mission: "Mission", values: "Values", transparency: "Transparency", security: "Security", efficiency: "Efficiency" }
+  };
 
   const fadeUpVariants = {
     hidden: { opacity: 0, y: 60 },
@@ -108,7 +106,7 @@ export default function About({ params }: { params: Promise<{ locale: Locale }> 
                 <div>
                   <h3 className="text-xl font-semibold text-yellow-400 mb-4">Vision</h3>
                   <p className="text-slate-300 text-lg leading-relaxed">
-                    We aim to become Asia's leading mining agency by setting new standards in transparency, sustainability, and innovation.
+                    We aim to become Asia&apos;s leading mining agency by setting new standards in transparency, sustainability, and innovation.
                   </p>
                 </div>
               </div>
@@ -117,7 +115,7 @@ export default function About({ params }: { params: Promise<{ locale: Locale }> 
             <div className="relative">
               <div className="bg-slate-800 rounded-2xl p-8 h-96 flex items-center justify-center">
                 <div className="text-center text-slate-500">
-                  <div className="text-sm">// TODO: Add image related to mining facility</div>
+                  <div className="text-sm">{/* TODO: Add image related to mining facility */}</div>
                 </div>
               </div>
             </div>
@@ -280,7 +278,7 @@ export default function About({ params }: { params: Promise<{ locale: Locale }> 
         </div>
       </section>
 
-      <Footer dict={dict} />
+      {/* Footer temporarily removed for testing */}
     </div>
   );
 }

@@ -30,7 +30,7 @@ export default function WhyChooseCoreBits() {
         duration: 2,
         repeat: Infinity,
         repeatDelay: 3,
-        ease: "linear"
+        ease: [0.25, 0.46, 0.45, 0.94] as const
       }
     }
   };
