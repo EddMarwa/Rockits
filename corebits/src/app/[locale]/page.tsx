@@ -101,7 +101,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
             ].map(({ name, ext }) => (
               <a key={name} href="#" className="h-16 rounded-lg border border-white/5 bg-[#1E293B] flex items-center justify-center hover:border-[#EAB308]/40 transition">
                 <span className="sr-only">{name} logo</span>
-                <Image src={`/images/partners/${name}.${ext}`} alt="" width={120} height={40} className="opacity-80 object-contain w-20 h-10 max-w-full max-h-full" />
+                <Image src={`/images/partners/${name}.${ext}`} alt="" width={130} height={50} className="opacity-80 object-contain w-20 h-10 max-w-full max-h-full" />
               </a>
             ))}
           </div>
