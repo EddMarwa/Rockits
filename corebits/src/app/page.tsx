@@ -1,121 +1,350 @@
-import { getDictionary } from '@/i18n';
+"use client";
+import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import LandingNavbar from '@/components/LandingNavbar';
 import Footer from '@/components/Footer';
-import Timer from '@/components/Timer';
-import type { Locale } from '@/types/i18n';
-import NotifyForm from '@/components/NotifyForm';
-import FeaturesGrid from '@/components/FeaturesGrid';
-import FloatingIcons from '@/components/FloatingIcons';
-import TransparencyLegal from '@/components/TransparencyLegal';
-import Image from 'next/image';
 
-export const revalidate = 3600;
+export default function Home() {
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
 
-export default async function Home() {
-  const locale: Locale = 'en';
-  const dict = await getDictionary(locale);
+  useEffect(() => {
+    const targetDate = new Date('2025-12-01T00:00:00').getTime();
+
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
+
+      if (difference > 0) {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        setTimeLeft({ days, hours, minutes, seconds });
+      } else {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      }
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const fadeUpVariants = {
+    hidden: { opacity: 0, y: 60 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.8 }
+    }
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0 }
+  };
+
+  const dict = {
+    nav: { home: "Home", about: "About", legal: "Legal", announcements: "Announcements", contact: "Contact" },
+    hero: { headline: "CoreBits", subheadline: "Cloud Mining Agency", cta: "Get Started" },
+    countdown: { label: "Launch Countdown" },
+    features: { title: "Features", secure: "Secure", daily: "Daily", registered: "Registered", global: "Global" },
+    testimonials: { title: "Testimonials" },
+    notify: { title: "Stay Updated", placeholder: "Enter email", button: "Subscribe", success: "Thank you!" },
+    footer: {
+      made: "Made with ❤️ in Malaysia",
+      terms: "Terms",
+      privacy: "Privacy", 
+      kyc: "KYC"
+    },
+    about: { title: "About", mission: "Mission", values: "Values", transparency: "Transparency", security: "Security", efficiency: "Efficiency", global: "Global" },
+    legal: { title: "Legal", text: "Legal text", certs: "Certificates", download: "Download", reports: "Reports", date: "Date", description: "Description", walletProofs: "Wallet Proofs" },
+    announcements: { title: "Announcements", comingSoon: "Coming Soon" },
+    contact: { title: "Contact", name: "Name", email: "Email", message: "Message", submit: "Submit", visit: "Visit", address: "Address", follow: "Follow" }
+  };
+
   return (
-    <div>
+    <div className="min-h-screen bg-slate-950 text-slate-50">
       <LandingNavbar />
-      <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-        <section id="home" className="grid md:grid-cols-2 items-center gap-10 py-12 relative">
-          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-[#004B87] to-[#FFD700] bg-clip-text text-transparent">
-            {dict.hero.headline}
-          </h1>
-          <div>
-            <p className="mt-4 text-lg opacity-80">{dict.hero.subheadline}</p>
-            <div className="mt-6 flex gap-3">
-              <a href="#plans" className="inline-block rounded-lg bg-[#004B87] text-white px-5 py-3 hover:opacity-90">
-                {dict.hero.cta}
-              </a>
-              <a href="#about" className="inline-block rounded-lg border px-5 py-3 hover:bg-black/5">
-                Learn More
-              </a>
-            </div>
-            <div className="mt-8">
-              <Timer target="2025-12-15T00:00:00+08:00" label={dict.countdown.label} />
-            </div>
-          </div>
-          <div className="h-64 bg-white rounded-2xl shadow-sm border border-black/10 hidden md:block relative overflow-hidden">
-            <FloatingIcons />
-          </div>
-        </section>
+      
+      {/* Hero Section */}
+      <section className="relative min-h-screen bg-gradient-to-br from-slate-800 to-slate-950 flex items-center justify-center px-6 md:px-12">
+        <div className="max-w-6xl mx-auto text-center">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeUpVariants}
+            className="space-y-8"
+          >
+            {/* Logo/Title */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <h1 className="text-6xl md:text-8xl font-bold text-slate-50 mb-4">
+                CoreBits
+              </h1>
+            </motion.div>
 
-        <section id="about">
-          <h2 className="text-2xl font-semibold mb-4">Why Choose CoreBits?</h2>
-          <FeaturesGrid items={[dict.features.secure, dict.features.daily, dict.features.registered, dict.features.global]} />
-        </section>
+            {/* Motto */}
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-3xl md:text-5xl font-bold text-yellow-400 mb-6"
+            >
+              Powering the Future, One Bit at a Time.
+            </motion.h2>
 
-        <section id="plans" className="mt-16">
-          <h2 className="text-2xl font-semibold mb-4">Choose Your Mining Power</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { name: 'Starter Plan', price: '$30', ths: '2.5 TH/s', profit: '2–3% daily', duration: '30 Days' },
-              { name: 'Pro Miner', price: '$150', ths: '10 TH/s', profit: '3.5–4% daily', duration: '60 Days' },
-              { name: 'Elite Rig', price: '$700', ths: '50 TH/s', profit: '5–6% daily', duration: '90 Days' }
-            ].map((p) => (
-              <div key={p.name} className="rounded-2xl p-[2px] bg-gradient-to-r from-[#004B87] to-[#FFD700]">
-                <div className="rounded-2xl bg-white dark:bg-slate-900 text-black dark:text-white p-6 h-full flex flex-col shadow-sm">
-                  <div className="text-sm opacity-70">{p.name}</div>
-                  <div className="text-3xl font-bold mt-1">{p.price}</div>
-                  <ul className="mt-4 space-y-1 text-sm">
-                    <li>{p.ths}</li>
-                    <li>{p.profit}</li>
-                    <li>{p.duration}</li>
-                  </ul>
-                  <a href="#contact" className="mt-6 inline-block rounded-lg bg-[#004B87] text-white px-4 py-2 hover:opacity-90">Buy Now</a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
+            {/* Subtext */}
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="text-xl md:text-2xl text-slate-400 max-w-4xl mx-auto leading-relaxed mb-12"
+            >
+              Join the next generation of decentralized miners and investors building global digital wealth together.
+            </motion.p>
 
-        <section id="partners" className="mt-16">
-          <h2 className="text-2xl font-semibold mb-4">Supported Platforms</h2>
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
-            {[
-              { name: 'Binance', ext: 'png' },
-              { name: 'OKX', ext: 'png' },
-              { name: 'Bybit', ext: 'png' },
-              { name: 'Coinbase', ext: 'png' },
-              { name: 'kucoin', ext: 'png' },
-              { name: 'Bitfinex', ext: 'jpg' },
-              { name: 'Gate.io', ext: 'png' },
-              { name: 'Mexc', ext: 'png' }
-            ].map(({ name, ext }) => (
-              <a key={name} href="#" className="h-16 rounded-lg border border-white/5 bg-[#1E293B] flex items-center justify-center hover:border-[#EAB308]/40 transition">
-                <span className="sr-only">{name} logo</span>
-                <Image src={`/images/partners/${name}.${ext}`} alt="" width={120} height={40} className="opacity-80 object-contain w-20 h-10 max-w-full max-h-full" />
-              </a>
-            ))}
-          </div>
-        </section>
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+            >
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Link 
+                  href="/en" 
+                  className="inline-flex items-center px-8 py-4 bg-yellow-400 text-slate-900 font-semibold rounded-lg shadow-lg hover:bg-yellow-300 transition-all duration-300 hover:shadow-[0_0_30px_rgba(234,179,8,0.4)]"
+                >
+                  View Mining Plans
+                </Link>
+              </motion.div>
+              
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Link 
+                  href="/en/about" 
+                  className="inline-flex items-center px-8 py-4 border-2 border-yellow-400 text-yellow-400 font-semibold rounded-lg hover:bg-yellow-400 hover:text-slate-900 transition-all duration-300"
+                >
+                  Learn More
+                </Link>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+          
+          {/* TODO: Add hero banner or animated mining background visual here */}
+        </div>
+      </section>
 
-        <TransparencyLegal locale={locale} />
+      {/* Countdown Timer Section */}
+      <section className="py-20 px-6 md:px-12 bg-slate-900/50">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUpVariants}
+            className="space-y-8"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-50 mb-4">
+              Application Launch Countdown
+            </h2>
+            <p className="text-xl text-slate-400 mb-12">
+              We&apos;re gearing up to launch the CoreBits Mining Platform soon. Stay tuned!
+            </p>
 
-        <section id="news" className="mt-16">
-          <h2 className="text-2xl font-semibold mb-4">Latest Updates</h2>
-          <div className="grid md:grid-cols-3 gap-6">
+            {/* Timer Boxes */}
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="grid grid-cols-2 md:grid-cols-4 gap-6"
+            >
+              {[
+                { label: 'Days', value: timeLeft.days },
+                { label: 'Hours', value: timeLeft.hours },
+                { label: 'Minutes', value: timeLeft.minutes },
+                { label: 'Seconds', value: timeLeft.seconds }
+              ].map((item) => (
+                <motion.div
+                  key={item.label}
+                  variants={itemVariants}
+                  className="bg-slate-800 p-6 rounded-xl shadow-inner border border-slate-700"
+                >
+                  <div className="text-3xl md:text-4xl font-bold text-yellow-400 mb-2">
+                    {item.value.toString().padStart(2, '0')}
+                  </div>
+                  <div className="text-slate-400 font-medium">
+                    {item.label}
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+          
+          {/* TODO: Add background texture or subtle motion blur behind timer */}
+        </div>
+      </section>
+
+      {/* Call to Action Banner */}
+      <section className="py-20 px-6 md:px-12 bg-gradient-to-r from-slate-800 via-slate-900 to-slate-800">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUpVariants}
+            className="space-y-8"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-50 mb-6">
+              Be part of the global mining revolution — secure your hash power today!
+            </h2>
+            
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Link 
+                href="/en" 
+                className="inline-flex items-center px-8 py-4 bg-yellow-400 text-slate-900 font-semibold rounded-lg shadow-lg hover:bg-yellow-300 transition-all duration-300 hover:shadow-[0_0_30px_rgba(234,179,8,0.4)]"
+              >
+                View Mining Plans
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Updates/Announcements Preview */}
+      <section className="py-20 px-6 md:px-12">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUpVariants}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-50 mb-4">
+              CoreBits Official Updates
+            </h2>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="grid md:grid-cols-3 gap-6"
+          >
             {[
               { date: '2025-09-01', title: 'CoreBits Expands Mining Capacity' },
               { date: '2025-10-10', title: 'TRON and BNB Payments Now Supported' },
               { date: '2025-11-05', title: 'Mobile App Beta Coming Soon' }
-            ].map((a) => (
-              <div key={a.date} className="rounded-lg p-5 border bg-white dark:bg-slate-900 border-black/10">
-                <div className="text-xs opacity-70 text-black dark:text-white">{a.date}</div>
-                <div className="font-medium text-black dark:text-white">{a.title}</div>
-              </div>
+            ].map((update) => (
+              <motion.div
+                key={update.date}
+                variants={itemVariants}
+                whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                className="bg-slate-800 p-6 rounded-xl hover:shadow-[0_20px_40px_rgba(234,179,8,0.1)] transition-all duration-300 border border-slate-700"
+              >
+                <div className="text-sm text-yellow-400 font-medium mb-3">
+                  {update.date}
+                </div>
+                <div className="text-lg font-semibold text-slate-50 mb-4">
+                  {update.title}
+                </div>
+                <div className="text-slate-400 text-sm">
+                  {/* TODO: Add placeholder for small update icons or timeline visuals */}
+                </div>
+              </motion.div>
             ))}
-          </div>
-          <a href={`/${locale}/announcements`} className="mt-4 inline-block rounded-lg border px-4 py-2 hover:bg-black/5">Read All</a>
-        </section>
+          </motion.div>
 
-        <section id="contact" className="mt-16">
-          <h2 className="text-xl font-semibold mb-3">{dict.notify.title}</h2>
-          <p className="opacity-80 mb-3">Get notified about new plans and updates.</p>
-          <NotifyForm dict={dict} />
-        </section>
-      </main>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUpVariants}
+            className="text-center mt-8"
+          >
+            <Link 
+              href="/en/announcements" 
+              className="inline-flex items-center px-6 py-3 border border-slate-600 text-slate-300 font-medium rounded-lg hover:border-yellow-400 hover:text-yellow-400 transition-all duration-300"
+            >
+              Read All
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Get Notified Section */}
+      <section className="py-20 px-6 md:px-12 bg-slate-900/50">
+        <div className="max-w-2xl mx-auto text-center">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUpVariants}
+            className="space-y-8"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-50 mb-4">
+              Get Notified
+            </h2>
+            <p className="text-xl text-slate-400 mb-8">
+              Get notified about new plans and updates.
+            </p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto"
+            >
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 px-4 py-3 rounded-lg bg-slate-800 border border-slate-600 text-slate-50 placeholder-slate-400 focus:border-yellow-400 focus:outline-none transition-colors"
+              />
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-6 py-3 bg-yellow-400 text-slate-900 font-semibold rounded-lg hover:bg-yellow-300 transition-all duration-300 hover:shadow-[0_0_20px_rgba(234,179,8,0.3)]"
+              >
+                Notify Me
+              </motion.button>
+            </motion.div>
+            
+            {/* TODO: Integrate form logic later (for newsletter signup) */}
+          </motion.div>
+        </div>
+      </section>
+
       <Footer dict={dict} />
     </div>
   );
