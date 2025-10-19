@@ -4,20 +4,25 @@ import Link from 'next/link';
 import LandingNavbar from '@/components/LandingNavbar';
 import Footer from '@/components/Footer';
 import WhyChooseCoreBits from '@/components/WhyChooseCoreBits';
+
 export default function About() {
   const dict = {
+    nav: { home: "Home", about: "About", legal: "Legal", announcements: "Announcements", contact: "Contact" },
+    hero: { headline: "CoreBits", subheadline: "Cloud Mining Agency", cta: "Get Started" },
+    countdown: { label: "Launch Countdown" },
+    features: { title: "Features", secure: "Secure", daily: "Daily", registered: "Registered", global: "Global" },
+    testimonials: { title: "Testimonials" },
+    notify: { title: "Stay Updated", placeholder: "Enter email", button: "Subscribe", success: "Thank you!" },
     footer: {
       made: "Made with ❤️ in Malaysia",
       terms: "Terms",
       privacy: "Privacy", 
       kyc: "KYC"
     },
-    nav: { home: "Home", about: "About", legal: "Legal", announcements: "Announcements", contact: "Contact" },
-    hero: { headline: "CoreBits", subheadline: "Cloud Mining Agency", cta: "Get Started" },
-    countdown: { label: "Launch Countdown" },
-    features: { secure: "Secure", daily: "Daily", registered: "Registered", global: "Global" },
-    notify: { title: "Stay Updated" },
-    about: { title: "About", mission: "Mission", values: "Values", transparency: "Transparency", security: "Security", efficiency: "Efficiency" }
+    about: { title: "About", mission: "Mission", values: "Values", transparency: "Transparency", security: "Security", efficiency: "Efficiency", global: "Global" },
+    legal: { title: "Legal", text: "Legal text", certs: "Certificates", download: "Download", reports: "Reports", date: "Date", description: "Description", walletProofs: "Wallet Proofs" },
+    announcements: { title: "Announcements", comingSoon: "Coming Soon" },
+    contact: { title: "Contact", name: "Name", email: "Email", message: "Message", submit: "Submit", visit: "Visit", address: "Address", follow: "Follow" }
   };
 
   const fadeUpVariants = {
@@ -65,7 +70,7 @@ export default function About() {
               whileTap={{ scale: 0.95 }}
             >
               <Link 
-                href="/certificates" 
+                href="/en/certificates" 
                 className="inline-flex items-center px-8 py-4 bg-yellow-400 text-slate-950 font-semibold rounded-xl hover:shadow-[0_0_30px_rgba(234,179,8,0.4)] transition-all duration-300"
               >
                 View Certificates
@@ -267,7 +272,7 @@ export default function About() {
               whileTap={{ scale: 0.95 }}
             >
               <Link 
-                href="/plans" 
+                href="/en" 
                 className="inline-flex items-center px-8 py-4 bg-yellow-400 text-slate-950 font-semibold rounded-xl hover:shadow-[0_0_30px_rgba(234,179,8,0.4)] transition-all duration-300"
               >
                 Explore Mining Plans
@@ -278,7 +283,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Footer temporarily removed for testing */}
+      <Footer dict={dict} />
     </div>
   );
 }
