@@ -1,4 +1,4 @@
-import Navbar from '@/components/Navbar';
+import LandingNavbar from '@/components/LandingNavbar';
 import Footer from '@/components/Footer';
 import { getDictionary } from '@/i18n';
 import type { Locale } from '@/types/i18n';
@@ -8,7 +8,7 @@ export default async function Legal({ params }: { params: Promise<{ locale: Loca
   const dict = await getDictionary(locale);
   return (
     <div>
-      <Navbar dict={dict} locale={locale} />
+      <LandingNavbar />
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <h1 className="text-3xl font-semibold mb-2">{dict.legal.title}</h1>
         <p className="opacity-80 mb-8">{dict.legal.text}</p>

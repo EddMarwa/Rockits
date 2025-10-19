@@ -99,7 +99,7 @@ export default function Home() {
             >
               <h1 className="text-6xl md:text-8xl font-bold text-slate-50 mb-4">
                 CoreBits
-              </h1>
+          </h1>
             </motion.div>
 
             {/* Motto */}
@@ -134,7 +134,7 @@ export default function Home() {
                 whileTap={{ scale: 0.95 }}
               >
                 <Link 
-                  href="/en" 
+                  href="/" 
                   className="inline-flex items-center px-8 py-4 bg-yellow-400 text-slate-900 font-semibold rounded-lg shadow-lg hover:bg-yellow-300 transition-all duration-300 hover:shadow-[0_0_30px_rgba(234,179,8,0.4)]"
                 >
                   View Mining Plans
@@ -149,15 +149,15 @@ export default function Home() {
                   href="/en/about" 
                   className="inline-flex items-center px-8 py-4 border-2 border-yellow-400 text-yellow-400 font-semibold rounded-lg hover:bg-yellow-400 hover:text-slate-900 transition-all duration-300"
                 >
-                  Learn More
+                Learn More
                 </Link>
               </motion.div>
             </motion.div>
           </motion.div>
           
           {/* TODO: Add hero banner or animated mining background visual here */}
-        </div>
-      </section>
+          </div>
+        </section>
 
       {/* Countdown Timer Section */}
       <section className="py-20 px-6 md:px-12 bg-slate-900/50">
@@ -197,18 +197,18 @@ export default function Home() {
                 >
                   <div className="text-3xl md:text-4xl font-bold text-yellow-400 mb-2">
                     {item.value.toString().padStart(2, '0')}
-                  </div>
+                </div>
                   <div className="text-slate-400 font-medium">
                     {item.label}
-                  </div>
+              </div>
                 </motion.div>
-              ))}
+            ))}
             </motion.div>
           </motion.div>
           
           {/* TODO: Add background texture or subtle motion blur behind timer */}
-        </div>
-      </section>
+          </div>
+        </section>
 
       {/* Call to Action Banner */}
       <section className="py-20 px-6 md:px-12 bg-gradient-to-r from-slate-800 via-slate-900 to-slate-800">
@@ -229,15 +229,15 @@ export default function Home() {
               whileTap={{ scale: 0.95 }}
             >
               <Link 
-                href="/en" 
+                href="/" 
                 className="inline-flex items-center px-8 py-4 bg-yellow-400 text-slate-900 font-semibold rounded-lg shadow-lg hover:bg-yellow-300 transition-all duration-300 hover:shadow-[0_0_30px_rgba(234,179,8,0.4)]"
               >
                 View Mining Plans
               </Link>
             </motion.div>
           </motion.div>
-        </div>
-      </section>
+          </div>
+        </section>
 
       {/* Updates/Announcements Preview */}
       <section className="py-20 px-6 md:px-12">
@@ -280,7 +280,7 @@ export default function Home() {
                 </div>
                 <div className="text-slate-400 text-sm">
                   {/* TODO: Add placeholder for small update icons or timeline visuals */}
-                </div>
+              </div>
               </motion.div>
             ))}
           </motion.div>
@@ -299,8 +299,8 @@ export default function Home() {
               Read All
             </Link>
           </motion.div>
-        </div>
-      </section>
+          </div>
+        </section>
 
       {/* Get Notified Section */}
       <section className="py-20 px-6 md:px-12 bg-slate-900/50">
@@ -343,7 +343,7 @@ export default function Home() {
             {/* TODO: Integrate form logic later (for newsletter signup) */}
           </motion.div>
         </div>
-      </section>
+        </section>
 
       <Footer dict={dict} />
     </div>
