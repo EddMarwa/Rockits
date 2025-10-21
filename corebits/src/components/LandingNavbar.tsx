@@ -34,7 +34,7 @@ export default function LandingNavbar() {
             About
           </Link>
           <Link 
-            href="/" 
+            href="/plans" 
             className="hover:text-[#EAB308] text-[#CBD5E1]"
           >
             Plans
@@ -60,7 +60,7 @@ export default function LandingNavbar() {
         </nav>
         <div>
           <Link 
-            href="/" 
+            href="/plans" 
             className="rounded-lg px-4 py-2 text-[#0F172A] bg-[#EAB308] hover:shadow-[0_0_0_4px_rgba(234,179,8,0.15)]"
           >
             Get Started
@@ -82,7 +82,7 @@ export default function LandingNavbar() {
             About
           </Link>
           <Link 
-            href="/" 
+            href="/plans" 
             className="hover:text-[#EAB308]"
           >
             Plans

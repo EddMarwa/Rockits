@@ -40,7 +40,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
           <div>
             <p className="mt-4 text-lg opacity-80">{dict.hero.subheadline}</p>
             <div className="mt-6 flex gap-3">
-              <a href="#plans" className="inline-block rounded-lg bg-[#004B87] text-white px-5 py-3 hover:opacity-90">
+              <a href="/plans" className="inline-block rounded-lg bg-[#004B87] text-white px-5 py-3 hover:opacity-90">
                 {dict.hero.cta}
               </a>
               <a href="#about" className="inline-block rounded-lg border px-5 py-3 hover:bg-black/5">
@@ -78,7 +78,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
                     <li>{p.profit}</li>
                     <li>{p.duration}</li>
                   </ul>
-                  <a href="#contact" className="mt-6 inline-block rounded-lg bg-[#004B87] text-white px-4 py-2 hover:opacity-90">Buy Now</a>
+                  <a href="/plans" className="mt-6 inline-block rounded-lg bg-[#004B87] text-white px-4 py-2 hover:opacity-90">Buy Now</a>
                 </div>
               </div>
             ))}
