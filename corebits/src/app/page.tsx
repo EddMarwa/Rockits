@@ -134,7 +134,7 @@ export default function Home() {
                 whileTap={{ scale: 0.95 }}
               >
                 <Link 
-                  href="/" 
+                  href="/plans" 
                   className="inline-flex items-center px-8 py-4 bg-yellow-400 text-slate-900 font-semibold rounded-lg shadow-lg hover:bg-yellow-300 transition-all duration-300 hover:shadow-[0_0_30px_rgba(234,179,8,0.4)]"
                 >
                   View Mining Plans
