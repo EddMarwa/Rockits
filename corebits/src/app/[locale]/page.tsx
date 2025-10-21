@@ -110,7 +110,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
         <TransparencyLegal locale={locale} />
 
         <section id="news" className="mt-16">
-          <h2 className="text-2xl font-semibold mb-4">Latest Updates</h2>
+          <h2 className="text-2xl font-semibold mb-4">Latest Updates!</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { date: '2025-09-01', title: 'CoreBits Expands Mining Capacity' },
