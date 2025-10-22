@@ -90,18 +90,18 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
           <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
             {/* TODO: Add platform logos in /public/images/partners/ */}
             {[
-              { name: 'Binance', ext: 'png' },
-              { name: 'OKX', ext: 'png' },
-              { name: 'Bybit', ext: 'png' },
-              { name: 'Coinbase', ext: 'png' },
-              { name: 'kucoin', ext: 'png' },
-              { name: 'Bitfinex', ext: 'jpg' },
-              { name: 'Gate.io', ext: 'png' },
-              { name: 'Mexc', ext: 'png' }
-            ].map(({ name, ext }) => (
-              <a key={name} href="#" className="h-16 rounded-lg border border-white/5 bg-[#1E293B] flex items-center justify-center hover:border-[#EAB308]/40 transition">
+              { file: 'Binance.png', name: 'Binance' },
+              { file: 'OKX.png', name: 'OKX' },
+              { file: 'Bybit.png', name: 'Bybit' },
+              { file: 'Coinbase.png', name: 'Coinbase' },
+              { file: 'kucoin.png', name: 'KuCoin' },
+              { file: 'Bitfinex.jpg', name: 'Bitfinex' },
+              { file: 'Gate.io.png', name: 'Gate.io' },
+              { file: 'Mexc.png', name: 'Mexc' }
+            ].map(({ file, name }) => (
+              <a key={file} href="#" className="h-16 rounded-lg border border-white/5 bg-[#1E293B] flex items-center justify-center hover:border-[#EAB308]/40 transition">
                 <span className="sr-only">{name} logo</span>
-                <Image src={`/images/partners/${name}.${ext}`} alt="" width={130} height={50} className="opacity-80 object-contain w-20 h-10 max-w-full max-h-full" />
+                <Image src={`/images/partners/${file}`} alt={`${name} logo`} width={130} height={50} className="opacity-80 object-contain w-20 h-10 max-w-full max-h-full" />
               </a>
             ))}
           </div>
