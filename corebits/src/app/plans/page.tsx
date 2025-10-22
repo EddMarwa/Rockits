@@ -49,6 +49,84 @@ export default function Plans() {
     contact: { title: "Contact", name: "Name", email: "Email", message: "Message", submit: "Submit", visit: "Visit", address: "Address", follow: "Follow" }
   };
 
+
+  const miningPlans = [
+    {
+      tier: "Starter",
+      tagline: "Perfect for beginners",
+      hashPower: "50 GH/s",
+      duration: "60 days",
+      roi: "120%",
+      price: "$30",
+      popular: false,
+      features: ["Daily payouts", "24/7 support", "Secure mining"]
+    },
+    {
+      tier: "Bronze",
+      tagline: "Steady growth plan",
+      hashPower: "200 GH/s",
+      duration: "90 days",
+      roi: "150%",
+      price: "$100",
+      popular: false,
+      features: ["Higher hash rate", "Priority support", "Auto reinvestment"]
+    },
+    {
+      tier: "Silver",
+      tagline: "Balanced investment",
+      hashPower: "1 TH/s",
+      duration: "120 days",
+      roi: "180%",
+      price: "$500",
+      popular: false,
+      features: ["Premium support", "Advanced analytics", "Flexible terms"]
+    },
+    {
+      tier: "Gold",
+      tagline: "Professional mining",
+      hashPower: "2.5 TH/s",
+      duration: "150 days",
+      roi: "200%",
+      price: "$1000",
+      popular: true,
+      features: ["Maximum efficiency", "Dedicated manager", "Custom solutions"]
+    },
+    {
+      tier: "Platinum",
+      tagline: "Elite-grade performance",
+      hashPower: "3.5 TH/s",
+      duration: "170 days",
+      roi: "230%",
+      price: "$1500",
+      popular: false,
+      features: ["VIP priority payouts", "Referral bonus", "Audit-backed rewards"]
+    },
+    {
+      tier: "Diamond",
+      tagline: "Enterprise level",
+      hashPower: "5 TH/s",
+      duration: "180 days",
+      roi: "250%",
+      price: "$3000",
+      popular: false,
+      features: ["VIP treatment", "Exclusive access", "White-label options"]
+    },
+    {
+      tier: "Elite",
+      tagline: "Ultimate investment package",
+      hashPower: "10 TH/s",
+      duration: "220 days",
+      roi: "300%",
+      price: "$5000",
+      popular: false,
+      features: [
+        "Private mining node",
+        "Custom ROI structure",
+        "Dedicated account manager"
+      ]
+    }
+  ];
+/*  
   const miningPlans = [
     {
       tier: "Starter",
@@ -101,6 +179,7 @@ export default function Plans() {
       features: ["VIP treatment", "Exclusive access", "White-label options"]
     }
   ];
+  */ 
 
   const paymentPlatforms = [
     "Binance", "OKX", "Bybit", "TRON", "BNB", "BTC", "USDT"
@@ -207,11 +286,11 @@ export default function Plans() {
                   
                   <div className="text-4xl font-bold mb-2" style={{ color: '#F8FAFC' }}>
                     {plan.price}
-                  </div>
+                    </div>
                   
                   <div className="text-lg font-semibold mb-6" style={{ color: '#EAB308' }}>
                     {plan.hashPower}
-                  </div>
+                    </div>
                   
                   <div className="space-y-3 mb-6">
                     <div className="flex justify-between py-2 border-b" style={{ borderColor: '#334155' }}>
