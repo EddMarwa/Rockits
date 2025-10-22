@@ -62,7 +62,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
         </section>
 
         <section id="plans" className="mt-16">
-          <h2 className="text-2xl font-semibold mb-4">Choose Your Mining Power</h2>
+          <h2 className="text-2xl font-semibold mb-4">Choose Your <span className="text-yellow-400">Mining Power</span></h2>
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { name: 'Starter Plan', price: '$30', ths: '2.5 TH/s', profit: '2–3% daily', duration: '30 Days' },

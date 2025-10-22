@@ -1,9 +1,10 @@
 "use client";
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, useAnimation, useReducedMotion } from 'framer-motion';
 import Link from 'next/link';
 import LandingNavbar from '@/components/LandingNavbar';
 import Footer from '@/components/Footer';
+import Image from 'next/image';
 import { Shield, Globe, Calendar, Lock, Download, ExternalLink, Check, Bitcoin, Zap, Clock, Star } from 'lucide-react';
 
 export default function Plans() {
@@ -130,8 +131,25 @@ export default function Plans() {
   }
 
   const paymentPlatforms = [
-    "Binance", "OKX", "Bybit", "TRON", "BNB", "BTC", "USDT"
+    { file: 'Binance.png', name: 'Binance', href: 'https://www.binance.com' },
+    { file: 'OKX.png', name: 'OKX', href: 'https://www.okx.com' },
+    { file: 'Bybit.png', name: 'Bybit', href: 'https://www.bybit.com' },
+    { file: 'Coinbase.png', name: 'Coinbase', href: 'https://www.coinbase.com' },
+    { file: 'kucoin.png', name: 'KuCoin', href: 'https://www.kucoin.com' },
+    { file: 'Bitfinex.jpg', name: 'Bitfinex', href: 'https://www.bitfinex.com' },
+    { file: 'Gate.io.png', name: 'Gate.io', href: 'https://www.gate.io' },
+    { file: 'Mexc.png', name: 'Mexc', href: 'https://www.mexc.com' }
   ];
+
+  const controls = useAnimation();
+  const prefersReducedMotion = useReducedMotion();
+  const marqueeDuration = 20; // seconds for one loop (adjustable)
+
+  useEffect(() => {
+    if (prefersReducedMotion) return;
+    // start infinite horizontal scroll from 0% to -50% (because we duplicate the list)
+    controls.start({ x: ['0%', '-50%'], transition: { repeat: Infinity, repeatType: 'loop', duration: marqueeDuration, ease: 'linear' } });
+  }, [controls, prefersReducedMotion]);
 
   const features = [
     {
@@ -176,7 +194,7 @@ export default function Plans() {
           className="text-center mb-16"
         >
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-[#F8FAFC]">
-            Choose Your Mining Power
+            Choose Your <span className="text-yellow-400">Mining Power</span>
           </h1>
           <p className="text-center max-w-2xl mx-auto text-lg text-[#94A3B8]">
             Invest in CoreBits mining packages — from starter plans to professional rigs. Earn daily mining profits directly to your wallet.
@@ -284,26 +302,21 @@ export default function Plans() {
             </p>
           </div>
 
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="flex flex-wrap justify-center gap-6"
-          >
-            {paymentPlatforms.map((platform) => (
-              <motion.div
-                key={platform}
-                variants={itemVariants}
-                whileHover={{ scale: 1.1, opacity: 0.8 }}
-                className="p-4 rounded-xl flex items-center justify-center transition-all duration-300 border-2 border-transparent hover:border-yellow-400/30 bg-[#1E293B]"
-              >
-                {/* TODO: Add image placeholders — one <img> per platform, wrapped in clickable divs with hover glow. */}
-                {/* TODO: Add comment: // Replace image src later with official platform logos */}
-                <span className="font-medium text-sm text-[#94A3B8]">{platform}</span>
-              </motion.div>
-            ))}
-          </motion.div>
+          {/* Continuous marquee carousel of partner logos (duplicate list for seamless loop) */}
+          <div className="overflow-hidden" role="list">
+            <motion.div
+              className="flex items-center gap-6"
+              animate={prefersReducedMotion ? undefined : controls}
+              onHoverStart={() => controls.stop()}
+              onHoverEnd={() => { if (!prefersReducedMotion) controls.start({ x: ['0%', '-50%'], transition: { repeat: Infinity, repeatType: 'loop', duration: marqueeDuration, ease: 'linear' } }); }}
+            >
+              {paymentPlatforms.concat(paymentPlatforms).map(({ file, name, href }, i) => (
+                <a key={`${file}-${i}`} href={href} target="_blank" rel="noopener noreferrer" title={`${name} website`} className="flex-shrink-0 w-36 h-12 flex items-center justify-center rounded-lg bg-[#1E293B] focus:outline-none focus:ring-2 focus:ring-yellow-400/30" role="listitem" onFocus={() => controls.stop()} onBlur={() => { if (!prefersReducedMotion) controls.start({ x: ['0%', '-50%'], transition: { repeat: Infinity, repeatType: 'loop', duration: marqueeDuration, ease: 'linear' } }); }}>
+                  <Image src={`/images/partners/${file}`} alt={`${name} logo`} width={120} height={40} className="object-contain" />
+                </a>
+              ))}
+            </motion.div>
+          </div>
         </motion.section>
 
         {/* Call-to-Action Buttons */}
