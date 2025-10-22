@@ -126,60 +126,6 @@ export default function Plans() {
       ]
     }
   ];
-/*  
-  const miningPlans = [
-    {
-      tier: "Starter",
-      tagline: "Perfect for beginners",
-      hashPower: "50 GH/s",
-      duration: "60 days",
-      roi: "120%",
-      price: "$30",
-      popular: false,
-      features: ["Daily payouts", "24/7 support", "Secure mining"]
-    },
-    {
-      tier: "Bronze",
-      tagline: "Steady growth plan",
-      hashPower: "200 GH/s",
-      duration: "90 days",
-      roi: "150%",
-      price: "$100",
-      popular: false,
-      features: ["Higher hash rate", "Priority support", "Auto reinvestment"]
-    },
-    {
-      tier: "Silver",
-      tagline: "Balanced investment",
-      hashPower: "1 TH/s",
-      duration: "120 days",
-      roi: "180%",
-      price: "$500",
-      popular: false,
-      features: ["Premium support", "Advanced analytics", "Flexible terms"]
-    },
-    {
-      tier: "Gold",
-      tagline: "Professional mining",
-      hashPower: "2.5 TH/s",
-      duration: "150 days",
-      roi: "200%",
-      price: "$1000",
-      popular: true,
-      features: ["Maximum efficiency", "Dedicated manager", "Custom solutions"]
-    },
-    {
-      tier: "Diamond",
-      tagline: "Enterprise level",
-      hashPower: "5 TH/s",
-      duration: "180 days",
-      roi: "250%",
-      price: "$3000",
-      popular: false,
-      features: ["VIP treatment", "Exclusive access", "White-label options"]
-    }
-  ];
-  */ 
 
   const paymentPlatforms = [
     "Binance", "OKX", "Bybit", "TRON", "BNB", "BTC", "USDT"
