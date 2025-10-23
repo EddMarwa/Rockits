@@ -28,7 +28,7 @@ export default function Navbar({ dict, locale }: NavbarProps) {
     [base, dict]
   );
 
-  const otherLocale: Locale = locale === 'en' ? 'zh' : 'en';
+  const otherLocale: Locale = locale === 'en' ? 'en' : 'en';
   const switchHref = useMemo<Route<string>>(() => {
     if (!pathname) return `/${otherLocale}`;
     const segments = pathname.split('/').filter(Boolean);

@@ -4,6 +4,7 @@ import Footer from '@/components/Footer';
 import Timer from '@/components/Timer';
 import { locales } from '@/i18n';
 import { Metadata } from 'next';
+import { redirect } from 'next/navigation';
 import type { Locale } from '@/types/i18n';
 import NotifyForm from '@/components/NotifyForm';
 import FeaturesGrid from '@/components/FeaturesGrid';
@@ -28,6 +29,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
 
 export default async function Home({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
+  // If the locale root points to 'en' we prefer to use the root site homepage.
+  // Redirect /en -> / to avoid duplicate homepage paths.
+  if (locale === 'en') {
+    redirect('/');
+  }
   const dict = await getDictionary(locale);
   return (
     <div>
@@ -50,7 +56,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
             <div className="mt-8">
               <Timer target="2025-12-15T00:00:00+08:00" label={dict.countdown.label} />
             </div>
-          </div>
+          </div>  
           <div className="h-64 bg-white rounded-2xl shadow-sm border border-black/10 hidden md:block relative overflow-hidden">
             <FloatingIcons />
           </div>
