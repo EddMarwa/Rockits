@@ -4,7 +4,7 @@ import type { RootDict } from '@/types/i18n';
 import { motion } from 'framer-motion';
 import { isValidEmail, postToProxy } from '@/lib/forms';
 
-export default function NotifyForm({ dict }: { dict: RootDict }) {
+export default function NotifyForm({ dict, inputClassName, buttonClassName }: { dict: RootDict; inputClassName?: string; buttonClassName?: string }) {
   const [email, setEmail] = React.useState('');
   // Form status
   const [status, setStatus] = React.useState<'idle' | 'sending' | 'success' | 'error'>('idle');
@@ -66,17 +66,18 @@ export default function NotifyForm({ dict }: { dict: RootDict }) {
         <input
           onFocus={() => setFocusedField('email')}
           onBlur={() => setFocusedField(null)}
-          className={`flex-1 rounded border px-3 py-2 bg-white/80 dark:bg-black/30 border-black/10 dark:border-white/10 focus:outline-none ${focusedField === 'email' ? 'ring-2 ring-[#EAB308]/30 border-yellow-400/50' : ''}`}
+          className={`flex-1 rounded border px-3 py-2 bg-white/80 dark:bg-black/30 border-black/10 dark:border-white/10 focus:outline-none ${focusedField === 'email' ? 'ring-2 ring-[#EAB308]/30 border-yellow-400/50' : ''} ${inputClassName || ''}`}
           placeholder={dict.notify.placeholder}
           value={email}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
           type="email"
+          aria-label={dict.notify.placeholder}
         />
         {fieldErrors.email && <span className="text-red-500 text-sm mt-1">{fieldErrors.email}</span>}
       </div>
 
   {/* Submit button with spinner */}
-  <button type="submit" className="rounded bg-[#004B87] text-white px-4 py-2 flex items-center gap-2" disabled={status === 'sending'}>
+  <button type="submit" className={`rounded flex items-center gap-2 disabled:opacity-60 ${buttonClassName || 'bg-[#004B87] text-white px-4 py-2'}`} disabled={status === 'sending'}>
         {status === 'sending' && (
           <svg className="animate-spin h-4 w-4 text-white" viewBox="0 0 24 24">
             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"></circle>
