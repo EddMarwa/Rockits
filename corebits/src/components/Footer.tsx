@@ -1,4 +1,5 @@
 import type { RootDict } from '@/types/i18n';
+import Link from 'next/link';
 import { X, Linkedin, MessageSquare, Github } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -27,10 +28,10 @@ export default function Footer({ dict }: FooterProps) {
         <div className="space-y-2">
           <div className="font-semibold">Quick Links</div>
           <ul className="space-y-1 text-sm opacity-80">
-            <li><a href="/plans" className="hover:underline">Plans</a></li>
-            <li><a href="/about" className="hover:underline">About</a></li>
-            <li><a href="/contact" className="hover:underline">Contact</a></li>
-            <li><a href="/announcements" className="hover:underline">Announcements</a></li>
+            <li><Link href="/en/plans" className="hover:underline">Plans</Link></li>
+            <li><Link href="/en/about" className="hover:underline">About</Link></li>
+            <li><Link href="/en/contact" className="hover:underline">Contact</Link></li>
+            <li><Link href="/en/announcements" className="hover:underline">Announcements</Link></li>
           </ul>
         </div>
 
