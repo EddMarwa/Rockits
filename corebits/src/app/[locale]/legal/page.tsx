@@ -2,6 +2,8 @@ import LandingNavbar from '@/components/LandingNavbar';
 import Footer from '@/components/Footer';
 import { getDictionary } from '@/i18n';
 import type { Locale } from '@/types/i18n';
+import { FileText, Shield, Lock, Scroll, Download } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default async function Legal({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
@@ -10,16 +12,34 @@ export default async function Legal({ params }: { params: Promise<{ locale: Loca
     <div>
       <LandingNavbar />
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-        <h1 className="text-3xl font-semibold mb-2">{dict.legal.title}</h1>
-        <p className="opacity-80 mb-8">{dict.legal.text}</p>
+        <h1 className="text-3xl font-semibold mb-2 text-yellow-400">{dict.legal.title}</h1>
+        <p className="text-slate-400 mb-8">{dict.legal.text}</p>
 
         <section className="mb-10">
           <h2 className="text-xl font-medium mb-3">{dict.legal.certs}</h2>
-          <div className="flex flex-wrap gap-3">
-            {[1,2].map((i) => (
-              <a key={i} href={`/certificates/sample-${i}.pdf`} className="px-4 py-2 rounded border hover:bg-black/5 dark:hover:bg-white/10">
-                {dict.legal.download} PDF {i}
-              </a>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { file: 'sample-1.pdf', title: 'Q4 Mining Performance', issuer: 'CoreBits Audit', icon: 'FileText' },
+              { file: 'sample-2.pdf', title: 'Infrastructure Audit', issuer: 'Infra Labs', icon: 'Shield' },
+              { file: 'sample-3.pdf', title: 'Security Assessment', issuer: 'SecTrust', icon: 'Lock' }
+            ].map((d) => (
+              <motion.div key={d.file} whileHover={{ y: -6 }} className="p-6 rounded-lg bg-slate-800 border border-slate-700">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="p-3 rounded bg-slate-700">
+                    {d.icon === 'FileText' && <FileText className="w-6 h-6 text-yellow-400" />}
+                    {d.icon === 'Shield' && <Shield className="w-6 h-6 text-yellow-400" />}
+                    {d.icon === 'Lock' && <Lock className="w-6 h-6 text-yellow-400" />}
+                  </div>
+                  <div>
+                    <div className="font-semibold text-lg">{d.title}</div>
+                    <div className="text-sm text-slate-400">Issuer: {d.issuer}</div>
+                  </div>
+                </div>
+                <p className="text-sm text-slate-300 mb-4">Official document. Click download to save a copy (PDF).</p>
+                <a href={`/docs/${d.file}`} className="inline-flex items-center gap-2 px-4 py-2 rounded bg-yellow-400 text-slate-900 font-semibold" download>
+                  <Download className="w-4 h-4" /> Download PDF
+                </a>
+              </motion.div>
             ))}
           </div>
         </section>
