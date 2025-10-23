@@ -257,7 +257,7 @@ export default function Plans() {
                   <motion.a
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
-                    href="#"
+                    href="/plans/buy"
                     className="flex-1 inline-flex items-center justify-center gap-2 py-3 rounded-lg font-semibold bg-yellow-400 text-[#0F172A] shadow-lg"
                   >
                     <Star className="w-4 h-4" /> Buy Hash Power
