@@ -15,7 +15,9 @@ export default function Home() {
   });
 
   useEffect(() => {
-    const targetDate = new Date('2025-12-01T00:00:00').getTime();
+    // Read launch date from env (NEXT_PUBLIC_LAUNCH_DATE) or fallback
+    const launchDateStr = process.env.NEXT_PUBLIC_LAUNCH_DATE || '2025-12-01T00:00:00';
+    const targetDate = new Date(launchDateStr).getTime();
 
     const timer = setInterval(() => {
       const now = new Date().getTime();
@@ -66,7 +68,7 @@ export default function Home() {
     countdown: { label: "Launch Countdown" },
     features: { title: "Features", secure: "Secure", daily: "Daily", registered: "Registered", global: "Global" },
     testimonials: { title: "Testimonials" },
-    notify: { title: "Stay Updated", placeholder: "Enter email", button: "Subscribe", success: "Thank you!" },
+  notify: { title: "Stay Updated", placeholder: "Enter email", button: "Notify me", success: "Thank you!" },
     footer: {
       made: "Made with ❤️ in Malaysia",
       terms: "Terms",
@@ -303,32 +305,67 @@ export default function Home() {
           </div>
         </section>
 
-      {/* Get Notified Section */}
-      <section className="py-20 px-6 md:px-12 bg-slate-900/50">
-        <div className="max-w-2xl mx-auto text-center">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUpVariants}
-            className="space-y-8"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-50 mb-4">
-              Application Status
-            </h2>
-            <p className="text-xl text-yellow-300 mb-4 font-semibold">The application is LIVE — join now to secure early access.</p>
-            <p className="text-sm text-slate-400 mb-6">Enter your email to receive onboarding instructions and priority updates.</p>
+      {/* Application Launch Countdown / Get Notified */}
+      <section className="py-20 px-6 md:px-12 bg-gradient-to-b from-slate-800 to-slate-950 text-slate-50">
+        <div className="max-w-6xl mx-auto text-center">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariants} className="space-y-8">
+            <div className="bg-slate-800 p-8 rounded-xl shadow-sm border border-slate-700">
+              <h2 className="text-3xl md:text-4xl font-bold text-yellow-400 mb-2">
+                ⏳ Application Launch Countdown
+              </h2>
 
-            <div className="max-w-md mx-auto">
-              <NotifyForm
-                dict={dict}
-                inputClassName="max-w-sm"
-                buttonClassName="px-6 py-3 bg-yellow-400 text-slate-900 font-semibold rounded-lg hover:bg-yellow-300 transition-all duration-300 hover:shadow-[0_0_20px_rgba(234,179,8,0.3)]"
-              />
+              <p className="text-slate-300 mt-2 mb-6">CoreBits Cloud Mining is almost here! Enter your email to be notified the moment we go live.</p>
+
+              <div id="countdown" className="flex flex-col md:flex-row justify-center gap-6 items-center">
+                <div className="flex gap-6 text-center items-baseline">
+                  <div>
+                    <motion.span animate={{ scale: [1, 1.03, 1] }} transition={{ duration: 1.8, repeat: Infinity, repeatDelay: 0.6 }} className="text-5xl md:text-7xl font-extrabold text-yellow-400 drop-shadow-[0_8px_30px_rgba(234,179,8,0.12)]">{String(timeLeft.days).padStart(2, '0')}</motion.span>
+                    <p className="text-xs text-slate-400 mt-2">Days</p>
+                  </div>
+                  <div>
+                    <motion.span animate={{ scale: [1, 1.03, 1] }} transition={{ duration: 1.6, repeat: Infinity, repeatDelay: 0.6 }} className="text-5xl md:text-7xl font-extrabold text-yellow-400 drop-shadow-[0_8px_30px_rgba(234,179,8,0.12)]">{String(timeLeft.hours).padStart(2, '0')}</motion.span>
+                    <p className="text-xs text-slate-400 mt-2">Hours</p>
+                  </div>
+                  <div>
+                    <motion.span animate={{ scale: [1, 1.03, 1] }} transition={{ duration: 1.4, repeat: Infinity, repeatDelay: 0.6 }} className="text-5xl md:text-7xl font-extrabold text-yellow-400 drop-shadow-[0_8px_30px_rgba(234,179,8,0.12)]">{String(timeLeft.minutes).padStart(2, '0')}</motion.span>
+                    <p className="text-xs text-slate-400 mt-2">Minutes</p>
+                  </div>
+                  <div>
+                    <motion.span animate={{ scale: [1, 1.03, 1] }} transition={{ duration: 1.2, repeat: Infinity, repeatDelay: 0.6 }} className="text-5xl md:text-7xl font-extrabold text-yellow-400 drop-shadow-[0_8px_30px_rgba(234,179,8,0.12)]">{String(timeLeft.seconds).padStart(2, '0')}</motion.span>
+                    <p className="text-xs text-slate-400 mt-2">Seconds</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex justify-center mt-6">
+                <div className="flex flex-col sm:flex-row justify-center gap-2 max-w-sm mx-auto w-full">
+                  <NotifyForm
+                    dict={dict}
+                    inputClassName="flex-1 rounded-md bg-slate-800 border border-slate-700 text-white px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-yellow-400"
+                    buttonClassName="px-6 py-3 bg-yellow-400 text-slate-900 font-semibold rounded-lg hover:opacity-95 transition w-full sm:w-auto"
+                  />
+                </div>
+              </div>
+
+              {/* trust badges */}
+              <div className="mt-6 flex justify-center gap-4 opacity-90">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-700 border border-slate-600 text-sm text-slate-200">
+                  <span className="inline-block w-2 h-2 bg-yellow-400 rounded-full" />
+                  <span>Secure Payments</span>
+                </div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-700 border border-slate-600 text-sm text-slate-200">
+                  <span className="inline-block w-2 h-2 bg-yellow-400 rounded-full" />
+                  <span>24/7 Monitoring</span>
+                </div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-700 border border-slate-600 text-sm text-slate-200">
+                  <span className="inline-block w-2 h-2 bg-yellow-400 rounded-full" />
+                  <span>Global Nodes</span>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
-        </section>
+      </section>
 
       <Footer dict={dict} />
     </div>
