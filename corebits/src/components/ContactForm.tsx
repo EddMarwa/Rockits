@@ -11,7 +11,14 @@ export default function ContactForm({ dict }: { dict: RootDict }) {
     <form
       onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (name && email && message) setSent(true);
+        if (name && email && message) {
+          setSent(true);
+          // reset fields
+          setName('');
+          setEmail('');
+          setMessage('');
+          setTimeout(() => setSent(false), 8000);
+        }
       }}
       className="md:col-span-2 grid gap-3"
     >
