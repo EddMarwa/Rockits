@@ -22,7 +22,7 @@ google-apps-script.gs
 
 ```javascript
 // Replace with the ID of your Google Spreadsheet (the long ID in the sheet URL)
-const SPREADSHEET_ID = 'REPLACE_WITH_SPREADSHEET_ID';
+const SPREADSHEET_ID = 'AKfycbzc7XlLumvXGCKZshzWR81lXeRHo_QYb1ZcvClVZfDVivWfSlwMTWCnDQWiTE_fORw';
 
 function doPost(e) {
   try {
