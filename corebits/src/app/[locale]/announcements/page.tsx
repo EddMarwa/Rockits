@@ -32,7 +32,7 @@ export default async function Announcements({ params }: { params: Promise<{ loca
 
         <div className="text-center mt-12">
           <Link 
-            href="/contact" 
+            href={`/${locale}/contact`} 
             className="bg-yellow-400 text-slate-900 font-semibold px-6 py-3 rounded-lg hover:bg-yellow-300 transition"
           >
             Get Notified

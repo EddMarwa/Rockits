@@ -272,7 +272,7 @@ export default function About() {
               whileTap={{ scale: 0.95 }}
             >
               <Link 
-                href="/plans" 
+                href="/en/plans" 
                 className="inline-flex items-center px-8 py-4 bg-yellow-400 text-slate-950 font-semibold rounded-xl hover:shadow-[0_0_30px_rgba(234,179,8,0.4)] transition-all duration-300"
               >
                 Explore Mining Plans
