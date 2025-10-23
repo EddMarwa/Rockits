@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import LandingNavbar from '@/components/LandingNavbar';
 import Footer from '@/components/Footer';
+import NotifyForm from '@/components/NotifyForm';
 
 export default function Home() {
   const [timeLeft, setTimeLeft] = useState({
@@ -313,34 +314,18 @@ export default function Home() {
             className="space-y-8"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-slate-50 mb-4">
-              Get Notified
+              Application Status
             </h2>
-            <p className="text-xl text-slate-400 mb-8">
-              Get notified about new plans and updates.
-            </p>
+            <p className="text-xl text-yellow-300 mb-4 font-semibold">The application is LIVE — join now to secure early access.</p>
+            <p className="text-sm text-slate-400 mb-6">Enter your email to receive onboarding instructions and priority updates.</p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto"
-            >
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-lg bg-slate-800 border border-slate-600 text-slate-50 placeholder-slate-400 focus:border-yellow-400 focus:outline-none transition-colors"
+            <div className="max-w-md mx-auto">
+              <NotifyForm
+                dict={dict}
+                inputClassName="max-w-sm"
+                buttonClassName="px-6 py-3 bg-yellow-400 text-slate-900 font-semibold rounded-lg hover:bg-yellow-300 transition-all duration-300 hover:shadow-[0_0_20px_rgba(234,179,8,0.3)]"
               />
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 bg-yellow-400 text-slate-900 font-semibold rounded-lg hover:bg-yellow-300 transition-all duration-300 hover:shadow-[0_0_20px_rgba(234,179,8,0.3)]"
-              >
-                Notify Me
-              </motion.button>
-            </motion.div>
-            
-            {/* TODO: Integrate form logic later (for newsletter signup) */}
+            </div>
           </motion.div>
         </div>
         </section>
