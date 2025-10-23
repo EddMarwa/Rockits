@@ -9,7 +9,7 @@ export default async function Contact({ params }: { params: Promise<{ locale: Lo
   const dict = await getDictionary(locale);
   return (
     <div>
-      <LandingNavbar />
+      <LandingNavbar locale={locale} />
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <h1 className="text-3xl font-semibold mb-6">{dict.contact.title}</h1>
         <div className="grid md:grid-cols-3 gap-8">
@@ -30,7 +30,7 @@ export default async function Contact({ params }: { params: Promise<{ locale: Lo
           </div>
         </div>
       </main>
-      <Footer dict={dict} />
+      <Footer dict={dict} locale={locale} />
     </div>
   );
 }

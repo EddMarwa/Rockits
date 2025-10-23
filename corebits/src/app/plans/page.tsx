@@ -7,7 +7,9 @@ import Footer from '@/components/Footer';
 import Image from 'next/image';
 import { Shield, Globe, Calendar, Lock, Download, ExternalLink, Check, Bitcoin, Zap, Clock, Star } from 'lucide-react';
 
-export default function Plans() {
+type Props = { locale?: string };
+
+export default function Plans({ locale = 'en' }: Props) {
   const fadeUpVariants = {
     hidden: { opacity: 0, y: 60 },
     visible: { 
@@ -182,7 +184,7 @@ export default function Plans() {
 
   return (
     <div className="min-h-screen bg-[#0F172A]">
-      <LandingNavbar />
+      <LandingNavbar locale={locale} />
       
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         {/* Header Section */}
@@ -257,7 +259,7 @@ export default function Plans() {
                   <motion.a
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
-                    href="/plans/buy"
+                    href={`/${locale}/plans/buy`}
                     className="flex-1 inline-flex items-center justify-center gap-2 py-3 rounded-lg font-semibold bg-yellow-400 text-[#0F172A] shadow-lg"
                   >
                     <Star className="w-4 h-4" /> Buy Hash Power
@@ -333,7 +335,7 @@ export default function Plans() {
               whileTap={{ scale: 0.95 }}
             >
               <Link 
-                href="/"
+                href={`/${locale}`}
                 className="inline-flex items-center px-8 py-4 font-semibold rounded-lg transition-all duration-300 border-2 border-yellow-400 text-yellow-400 bg-transparent"
               >
                 Back to Home
@@ -345,7 +347,7 @@ export default function Plans() {
               whileTap={{ scale: 0.95 }}
             >
               <Link 
-                href="/about"
+                href={`/${locale}/about`}
                 className="inline-flex items-center px-8 py-4 font-semibold rounded-lg transition-all duration-300 bg-yellow-400 text-[#0F172A] shadow-lg"
               >
                 Learn More
@@ -502,7 +504,7 @@ export default function Plans() {
             whileTap={{ scale: 0.95 }}
           >
             <Link 
-              href="/en/contact"
+              href={`/${locale}/contact`}
               className="inline-flex items-center px-8 py-4 font-semibold rounded-lg shadow-lg transition-all duration-300 bg-yellow-400 text-[#0F172A]"
             >
               Get Started Now
@@ -513,7 +515,7 @@ export default function Plans() {
         </motion.section>
       </main>
 
-      <Footer dict={dict} />
+  <Footer dict={dict} locale={locale} />
     </div>
   );
 }

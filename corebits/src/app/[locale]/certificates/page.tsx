@@ -10,7 +10,7 @@ export default async function Certificates({ params }: { params: Promise<{ local
 
   return (
     <div>
-      <LandingNavbar />
+      <LandingNavbar locale={locale} />
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <section className="mb-10">
           <h1 className="text-3xl font-semibold mb-2">Our Legal Standing</h1>
@@ -72,7 +72,7 @@ export default async function Certificates({ params }: { params: Promise<{ local
           </ul>
         </section>
       </main>
-      <Footer dict={dict} />
+      <Footer dict={dict} locale={locale} />
     </div>
   );
 }

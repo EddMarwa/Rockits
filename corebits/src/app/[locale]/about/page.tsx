@@ -47,7 +47,7 @@ export default function About() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50">
-      <LandingNavbar />
+      <LandingNavbar locale="en" />
       
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-slate-800 to-slate-950 py-16 px-6 md:px-12">
@@ -70,7 +70,7 @@ export default function About() {
               whileTap={{ scale: 0.95 }}
             >
               <Link 
-                href="/en/certificates" 
+                href={`/${'en'}/certificates`} 
                 className="inline-flex items-center px-8 py-4 bg-yellow-400 text-slate-950 font-semibold rounded-xl hover:shadow-[0_0_30px_rgba(234,179,8,0.4)] transition-all duration-300"
               >
                 View Certificates
@@ -272,7 +272,7 @@ export default function About() {
               whileTap={{ scale: 0.95 }}
             >
               <Link 
-                href="/en/plans" 
+                href={`/${'en'}/plans`} 
                 className="inline-flex items-center px-8 py-4 bg-yellow-400 text-slate-950 font-semibold rounded-xl hover:shadow-[0_0_30px_rgba(234,179,8,0.4)] transition-all duration-300"
               >
                 Explore Mining Plans
@@ -283,7 +283,7 @@ export default function About() {
         </div>
       </section>
 
-      <Footer dict={dict} />
+  <Footer dict={dict} locale="en" />
     </div>
   );
 }

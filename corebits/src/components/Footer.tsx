@@ -1,17 +1,25 @@
+"use client";
 import type { RootDict } from '@/types/i18n';
 import Link from 'next/link';
 import { X, Linkedin, MessageSquare, Github } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { usePathname } from 'next/navigation';
 
 type FooterProps = {
   dict: RootDict;
+  locale?: string;
 };
 
-export default function Footer({ dict }: FooterProps) {
+export default function Footer({ dict, locale: propLocale }: FooterProps) {
   const year = new Date().getFullYear();
+  const pathname = usePathname();
+  const detected = typeof pathname === 'string' ? pathname.split('/')[1] : '';
+  const locale = propLocale ?? (detected && detected.length > 0 ? detected : 'en');
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   return (
@@ -28,10 +36,10 @@ export default function Footer({ dict }: FooterProps) {
         <div className="space-y-2">
           <div className="font-semibold">Quick Links</div>
           <ul className="space-y-1 text-sm opacity-80">
-            <li><Link href="/en/plans" className="hover:underline">Plans</Link></li>
-            <li><Link href="/en/about" className="hover:underline">About</Link></li>
-            <li><Link href="/en/contact" className="hover:underline">Contact</Link></li>
-            <li><Link href="/en/announcements" className="hover:underline">Announcements</Link></li>
+            <li><Link href={`/${locale}/plans`} className="hover:underline">Plans</Link></li>
+            <li><Link href={`/${locale}/about`} className="hover:underline">About</Link></li>
+            <li><Link href={`/${locale}/contact`} className="hover:underline">Contact</Link></li>
+            <li><Link href={`/${locale}/announcements`} className="hover:underline">Announcements</Link></li>
           </ul>
         </div>
 
@@ -40,8 +48,8 @@ export default function Footer({ dict }: FooterProps) {
           <div className="w-full">
             <div className="font-semibold">Legal & Documents</div>
             <div className="mt-2 flex gap-3 justify-end">
-              <a href="/en/legal" className="text-sm hover:underline">Certificates</a>
-              <a href="/en/legal" className="text-sm hover:underline">Reports</a>
+              <Link href={`/${locale}/legal`} className="text-sm hover:underline">Certificates</Link>
+              <Link href={`/${locale}/legal`} className="text-sm hover:underline">Reports</Link>
             </div>
           </div>
 

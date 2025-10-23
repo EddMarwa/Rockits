@@ -31,7 +31,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
   const dict = await getDictionary(locale);
   return (
     <div>
-      <LandingNavbar />
+      <LandingNavbar locale={locale} />
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <section id="home" className="grid md:grid-cols-2 items-center gap-10 py-12 relative">
           <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-[#004B87] to-[#FFD700] bg-clip-text text-transparent">
@@ -40,7 +40,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
           <div>
             <p className="mt-4 text-lg opacity-80">{dict.hero.subheadline}</p>
             <div className="mt-6 flex gap-3">
-              <a href="/plans" className="inline-block rounded-lg bg-[#004B87] text-white px-5 py-3 hover:opacity-90">
+              <a href={`/${locale}/plans`} className="inline-block rounded-lg bg-[#004B87] text-white px-5 py-3 hover:opacity-90">
                 {dict.hero.cta}
               </a>
               <a href="#about" className="inline-block rounded-lg border px-5 py-3 hover:bg-black/5">
@@ -78,7 +78,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
                     <li>{p.profit}</li>
                     <li>{p.duration}</li>
                   </ul>
-                  <a href="/plans" className="mt-6 inline-block rounded-lg bg-[#004B87] text-white px-4 py-2 hover:opacity-90">Buy Now</a>
+                  <a href={`/${locale}/plans`} className="mt-6 inline-block rounded-lg bg-[#004B87] text-white px-4 py-2 hover:opacity-90">Buy Now</a>
                 </div>
               </div>
             ))}
@@ -132,7 +132,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
           <NotifyForm dict={dict} />
         </section>
       </main>
-      <Footer dict={dict} />
+      <Footer dict={dict} locale={locale} />
     </div>
   );
 }

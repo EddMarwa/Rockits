@@ -1,8 +1,13 @@
 "use client";
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
-export default function LandingNavbar() {
+type Props = {
+  locale?: string;
+};
+
+export default function LandingNavbar({ locale: propLocale }: Props) {
   const [scrolled, setScrolled] = useState(false);
   
   useEffect(() => {
@@ -11,48 +16,47 @@ export default function LandingNavbar() {
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
-
-  // Default to English locale for simplicity
-  // const locale = 'en';
-
+  const pathname = usePathname();
+  const detected = typeof pathname === 'string' ? pathname.split('/')[1] : '';
+  const locale = propLocale ?? (detected && detected.length > 0 ? detected : 'en');
   return (
     <header className={`sticky top-0 z-50 transition-colors ${scrolled ? 'backdrop-blur bg-[#0F172A]/70 border-b border-white/10' : 'bg-transparent'}`}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <Link href="/" className="font-bold text-xl">CoreBits</Link>
+  <Link href={`/${locale}`} className="font-bold text-xl">CoreBits</Link>
         {/* TODO: Add CoreBits logo image here later (optional) */}
         <nav className="hidden md:flex items-center gap-6 text-sm">
           <Link 
-            href="/" 
+            href={`/${locale}`} 
             className="hover:text-[#EAB308] text-[#CBD5E1]"
           >
             Home
           </Link>
           <Link 
-            href="/en/about" 
+            href={`/${locale}/about`} 
             className="hover:text-[#EAB308] text-[#CBD5E1]"
           >
             About
           </Link>
           <Link 
-            href="/plans" 
+            href={`/${locale}/plans`} 
             className="hover:text-[#EAB308] text-[#CBD5E1]"
           >
             Plans
           </Link>
           <Link 
-            href="/en/certificates" 
+            href={`/${locale}/certificates`} 
             className="hover:text-[#EAB308] text-[#CBD5E1]"
           >
             Certificates
           </Link>
           <Link 
-            href="/en/announcements" 
+            href={`/${locale}/announcements`} 
             className="hover:text-[#EAB308] text-[#CBD5E1]"
           >
             Announcements
           </Link>
           <Link 
-            href="/en/contact" 
+            href={`/${locale}/contact`} 
             className="hover:text-[#EAB308] text-[#CBD5E1]"
           >
             Contact
@@ -60,7 +64,7 @@ export default function LandingNavbar() {
         </nav>
         <div>
           <Link 
-            href="/plans" 
+            href={`/${locale}/plans`} 
             className="rounded-lg px-4 py-2 text-[#0F172A] bg-[#EAB308] hover:shadow-[0_0_0_4px_rgba(234,179,8,0.15)]"
           >
             Get Started
@@ -70,37 +74,37 @@ export default function LandingNavbar() {
       <nav className="md:hidden border-t border-white/10">
         <div className="mx-auto max-w-7xl px-4 py-2 flex gap-4 overflow-x-auto text-sm">
           <Link 
-            href="/" 
+            href={`/${locale}`} 
             className="hover:text-[#EAB308]"
           >
             Home
           </Link>
           <Link 
-            href="/en/about" 
+            href={`/${locale}/about`} 
             className="hover:text-[#EAB308]"
           >
             About
           </Link>
           <Link 
-            href="/plans" 
+            href={`/${locale}/plans`} 
             className="hover:text-[#EAB308]"
           >
             Plans
           </Link>
           <Link 
-            href="/en/certificates" 
+            href={`/${locale}/certificates`} 
             className="hover:text-[#EAB308]"
           >
             Certificates
           </Link>
           <Link 
-            href="/en/announcements" 
+            href={`/${locale}/announcements`} 
             className="hover:text-[#EAB308]"
           >
             Announcements
           </Link>
           <Link 
-            href="/en/contact" 
+            href={`/${locale}/contact`} 
             className="hover:text-[#EAB308]"
           >
             Contact

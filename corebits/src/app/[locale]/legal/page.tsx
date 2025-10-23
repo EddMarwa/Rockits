@@ -34,7 +34,7 @@ export default async function Legal({ params }: { params: Promise<{ locale: Loca
 
   return (
     <div>
-      <LandingNavbar />
+      <LandingNavbar locale={locale} />
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <h1 className="text-3xl font-semibold mb-2 text-yellow-400">{dict.legal.title}</h1>
         <p className="text-slate-400 mb-8">{dict.legal.text}</p>
@@ -95,7 +95,7 @@ export default async function Legal({ params }: { params: Promise<{ locale: Loca
           </ul>
         </section>
       </main>
-      <Footer dict={dict} />
+  <Footer dict={dict} locale={locale} />
     </div>
   );
 }

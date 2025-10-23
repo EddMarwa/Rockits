@@ -80,7 +80,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50">
-      <LandingNavbar />
+  <LandingNavbar locale="en" />
       
       {/* Hero Section */}
       <section className="relative min-h-screen bg-gradient-to-br from-slate-800 to-slate-950 flex items-center justify-center px-6 md:px-12">
@@ -134,7 +134,7 @@ export default function Home() {
                 whileTap={{ scale: 0.95 }}
               >
                 <Link 
-                  href="/en/plans" 
+                  href={`/${'en'}/plans`} 
                   className="inline-flex items-center px-8 py-4 bg-yellow-400 text-slate-900 font-semibold rounded-lg shadow-lg hover:bg-yellow-300 transition-all duration-300 hover:shadow-[0_0_30px_rgba(234,179,8,0.4)]"
                 >
                   View Mining Plans
@@ -146,7 +146,7 @@ export default function Home() {
                 whileTap={{ scale: 0.95 }}
               >
                 <Link 
-                  href="/en/about" 
+                  href={`/${'en'}/about`} 
                   className="inline-flex items-center px-8 py-4 border-2 border-yellow-400 text-yellow-400 font-semibold rounded-lg hover:bg-yellow-400 hover:text-slate-900 transition-all duration-300"
                 >
                 Learn More
@@ -229,7 +229,7 @@ export default function Home() {
               whileTap={{ scale: 0.95 }}
             >
               <Link 
-                href="/" 
+                href={`/${'en'}`} 
                 className="inline-flex items-center px-8 py-4 bg-yellow-400 text-slate-900 font-semibold rounded-lg shadow-lg hover:bg-yellow-300 transition-all duration-300 hover:shadow-[0_0_30px_rgba(234,179,8,0.4)]"
               >
                 View Mining Plans
@@ -293,7 +293,7 @@ export default function Home() {
             className="text-center mt-8"
           >
             <Link 
-              href="/en/announcements" 
+              href={`/${'en'}/announcements`} 
               className="inline-flex items-center px-6 py-3 border border-slate-600 text-slate-300 font-medium rounded-lg hover:border-yellow-400 hover:text-yellow-400 transition-all duration-300"
             >
               Read All

@@ -19,7 +19,7 @@ export default async function Announcements({ params }: { params: Promise<{ loca
 
   return (
     <div className="bg-[#0F172A] text-[#F8FAFC] min-h-screen">
-      <LandingNavbar />
+      <LandingNavbar locale={locale} />
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <section className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-extrabold text-yellow-400 mb-4">Announcements</h1>
@@ -39,7 +39,7 @@ export default async function Announcements({ params }: { params: Promise<{ loca
           </Link>
         </div>
       </main>
-      <Footer dict={dict} />
+  <Footer dict={dict} locale={locale} />
     </div>
   );
 }
