@@ -19,6 +19,18 @@ export default function Plans({ locale = 'en' }: Props) {
     }
   };
 
+  const miningPlans = [
+    { tier: 'Starter', price: '$30', hashPower: '30 GH/s', duration: 60, roi: 120, description: 'Perfect for beginners', features: ['Daily payouts', '24/7 support', 'Secure mining'] },
+    { tier: 'Basic', price: '$50', hashPower: '70 GH/s', duration: 70, roi: 130, description: 'Entry-level growth', features: ['Low entry cost', 'Auto reinvest', 'Simple dashboard'] },
+    { tier: 'Bronze', price: '$100', hashPower: '200 GH/s', duration: 90, roi: 150, description: 'Steady growth plan', features: ['Higher hash rate', 'Priority support', 'Auto reinvestment'] },
+    { tier: 'Silver', price: '$500', hashPower: '1 TH/s', duration: 120, roi: 180, description: 'Balanced investment', features: ['Premium support', 'Advanced analytics', 'Flexible terms'] },
+    { tier: 'Gold', price: '$1000', hashPower: '2.5 TH/s', duration: 150, roi: 200, description: 'Professional mining', features: ['Maximum efficiency', 'Dedicated manager', 'Custom solutions'] },
+    { tier: 'Platinum', price: '$1500', hashPower: '3.5 TH/s', duration: 170, roi: 230, description: 'Elite-grade performance', features: ['VIP priority payouts', 'Referral bonus', 'Audit-backed rewards'] },
+    { tier: 'Diamond', price: '$3000', hashPower: '5 TH/s', duration: 180, roi: 250, description: 'Enterprise level', features: ['VIP treatment', 'Exclusive access', 'White-label options'] },
+    { tier: 'Elite', price: '$5000', hashPower: '10 TH/s', duration: 220, roi: 300, description: 'Ultimate investment package', features: ['Private mining node', 'Custom ROI structure', 'Dedicated account manager'] },
+    { tier: 'Ultra', price: '$8000', hashPower: '15 TH/s', duration: 240, roi: 350, description: 'Institutional-grade power', features: ['Enterprise SLA', 'Custom integrations', 'Priority provisioning'] }
+  ];
+
   const staggerContainer = {
     hidden: { opacity: 0 },
     visible: {
@@ -42,7 +54,7 @@ export default function Plans({ locale = 'en' }: Props) {
     testimonials: { title: "Testimonials" },
     notify: { title: "Stay Updated", placeholder: "Enter email", button: "Subscribe", success: "Thank you!" },
     footer: {
-      made: "Made with ❤️ in Malaysia",
+          made: "Made with ❤️",
       terms: "Terms",
       privacy: "Privacy", 
       kyc: "KYC"
@@ -53,18 +65,6 @@ export default function Plans({ locale = 'en' }: Props) {
     contact: { title: "Contact", name: "Name", email: "Email", message: "Message", submit: "Submit", visit: "Visit", address: "Address", follow: "Follow" }
   };
 
-
-  const miningPlans = [
-    { tier: 'Starter', price: '$30', hashPower: '30 GH/s', duration: 60, roi: 120, description: 'Perfect for beginners', features: ['Daily payouts', '24/7 support', 'Secure mining'] },
-    { tier: 'Basic', price: '$50', hashPower: '70 GH/s', duration: 70, roi: 130, description: 'Entry-level growth', features: ['Low entry cost', 'Auto reinvest', 'Simple dashboard'] },
-    { tier: 'Bronze', price: '$100', hashPower: '200 GH/s', duration: 90, roi: 150, description: 'Steady growth plan', features: ['Higher hash rate', 'Priority support', 'Auto reinvestment'] },
-    { tier: 'Silver', price: '$500', hashPower: '1 TH/s', duration: 120, roi: 180, description: 'Balanced investment', features: ['Premium support', 'Advanced analytics', 'Flexible terms'] },
-    { tier: 'Gold', price: '$1000', hashPower: '2.5 TH/s', duration: 150, roi: 200, description: 'Professional mining', features: ['Maximum efficiency', 'Dedicated manager', 'Custom solutions'] },
-    { tier: 'Platinum', price: '$1500', hashPower: '3.5 TH/s', duration: 170, roi: 230, description: 'Elite-grade performance', features: ['VIP priority payouts', 'Referral bonus', 'Audit-backed rewards'] },
-    { tier: 'Diamond', price: '$3000', hashPower: '5 TH/s', duration: 180, roi: 250, description: 'Enterprise level', features: ['VIP treatment', 'Exclusive access', 'White-label options'] },
-    { tier: 'Elite', price: '$5000', hashPower: '10 TH/s', duration: 220, roi: 300, description: 'Ultimate investment package', features: ['Private mining node', 'Custom ROI structure', 'Dedicated account manager'] },
-    { tier: 'Ultra', price: '$8000', hashPower: '15 TH/s', duration: 240, roi: 350, description: 'Institutional-grade power', features: ['Enterprise SLA', 'Custom integrations', 'Priority provisioning'] }
-  ];
 
   const [selectedPlanIndex, setSelectedPlanIndex] = useState<number | null>(null);
 
@@ -166,8 +166,8 @@ export default function Plans({ locale = 'en' }: Props) {
     },
     {
       icon: Lock,
-      title: "Malaysia Registered Business",
-      description: "Fully compliant with Malaysian regulations and international business standards."
+      title: "Registered Business",
+      description: "Fully compliant with applicable regulations and international business standards."
     },
     {
       icon: Globe,
@@ -423,7 +423,7 @@ export default function Plans({ locale = 'en' }: Props) {
               <h3 className="text-xl font-semibold mb-4 text-yellow-400">Business Certificates</h3>
               <div className="space-y-3">
                 <div className="flex items-center justify-between p-3 rounded-lg bg-[#334155]">
-                  <span className="text-[#94A3B8]">Malaysia Business Registration</span>
+                  <span className="text-[#94A3B8]">Business Registration</span>
                   <motion.button whileHover={{ scale: 1.05 }} className="flex items-center gap-2 text-yellow-400 transition-colors">
                     <Download className="w-4 h-4" />
                     Download PDF
