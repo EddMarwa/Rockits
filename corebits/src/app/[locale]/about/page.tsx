@@ -14,7 +14,7 @@ export default function About() {
     testimonials: { title: "Testimonials" },
     notify: { title: "Stay Updated", placeholder: "Enter email", button: "Subscribe", success: "Thank you!" },
     footer: {
-      made: "Made with ❤️ in Malaysia",
+      made: "Made with ❤️",
       terms: "Terms",
       privacy: "Privacy", 
       kyc: "KYC"
@@ -63,7 +63,7 @@ export default function About() {
               <span className="text-yellow-400 block">Transparency & Trust</span>
             </h1>
             <p className="text-xl text-slate-400 mb-8 max-w-4xl mx-auto leading-relaxed">
-              At CoreBits, we provide secure, scalable, and transparent cloud mining opportunities for everyone — backed by verified Malaysian registration and real-time transparency.
+              At CoreBits, we provide secure, scalable, and transparent cloud mining opportunities for everyone — backed by verified registration and real-time transparency.
             </p>
             <motion.div
               whileHover={{ scale: 1.05 }}
