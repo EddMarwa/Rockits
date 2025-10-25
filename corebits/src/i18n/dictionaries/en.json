@@ -9,7 +9,7 @@
   },
   "hero": {
     "headline": "Powering the Future, One Bit at a Time.",
-    "subheadline": "Malaysia’s Trusted Cloud Mining Agency",
+  "subheadline": "Trusted Cloud Mining Agency",
     "cta": "View Mining Plans"
   },
   "countdown": {
@@ -19,7 +19,7 @@
     "title": "Why CoreBits",
     "secure": "Secure Cloud Mining",
     "daily": "Daily Profit Distribution",
-    "registered": "Malaysia Registered Business",
+  "registered": "Registered Business",
     "global": "Global Access"
   },
   "testimonials": {
@@ -32,7 +32,7 @@
     "success": "Thanks! We will keep you posted."
   },
   "footer": {
-    "made": "Made with 💠 in Malaysia",
+  "made": "Made with 💠",
     "terms": "Terms",
     "privacy": "Privacy",
     "kyc": "KYC Policy"
@@ -48,7 +48,7 @@
   },
   "legal": {
     "title": "Our Legal Standing",
-    "text": "CoreBits operates transparently and is registered under Malaysian regulations.",
+  "text": "CoreBits operates transparently and is registered under applicable regulations.",
     "certs": "Business Certificates",
     "download": "Download",
     "reports": "Transparency Reports",
@@ -68,7 +68,7 @@
     "submit": "Send Message",
     "success": "Message sent successfully!",
     "visit": "Visit Our Office",
-    "address": "Kuala Lumpur, Malaysia",
+  "address": "Contact us for office locations",
     "follow": "Follow Us"
   }
 }

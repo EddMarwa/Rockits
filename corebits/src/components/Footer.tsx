@@ -29,7 +29,7 @@ export default function Footer({ dict, locale: propLocale }: FooterProps) {
         <div className="space-y-3">
           <div className="text-xl font-bold text-yellow-400">CoreBits</div>
           <div className="text-sm opacity-80">{dict.footer.made}</div>
-          <div className="text-sm opacity-70">Registered in Malaysia. Contact us for partnerships and enterprise solutions.</div>
+          <div className="text-sm opacity-70">Registered company. Contact us for partnerships and enterprise solutions.</div>
         </div>
 
         {/* Quick Links */}
