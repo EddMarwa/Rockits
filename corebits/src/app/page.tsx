@@ -70,7 +70,7 @@ export default function Home() {
     testimonials: { title: "Testimonials" },
   notify: { title: "Stay Updated", placeholder: "Enter email", button: "Notify me", success: "Thank you!" },
     footer: {
-      made: "Made with ❤️ in Malaysia",
+      made: "Made with ❤️",
       terms: "Terms",
       privacy: "Privacy", 
       kyc: "KYC"
