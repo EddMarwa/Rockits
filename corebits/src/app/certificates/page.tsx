@@ -16,7 +16,7 @@ export default async function CertificatesPage() {
         <section className="text-center">
           <h1 className="text-4xl md:text-5xl font-extrabold text-yellow-400 mb-4">Transparency & Legal Documents</h1>
           <p className="text-slate-300 max-w-2xl mx-auto">
-            CoreBits operates transparently under Malaysian law. View our verified certificates, reports, and wallet proofs below.
+            CoreBits operates transparently under applicable law. View our verified certificates, reports, and wallet proofs below.
           </p>
         </section>
 
@@ -26,7 +26,7 @@ export default async function CertificatesPage() {
             <FadeCard key={title} delay={i * 0.06} className="bg-[#1E293B] p-6 rounded-2xl shadow-md text-center hover:-translate-y-2 transition">
               {/* TODO: Add icon image here */}
               <h3 className="text-lg font-semibold text-yellow-400 mb-2">{title}</h3>
-              <p className="text-slate-400 text-sm mb-4">Verified document proving CoreBits’ legal operation in Malaysia.</p>
+              <p className="text-slate-400 text-sm mb-4">Verified document proving CoreBits’ legal operation.</p>
               {/* TODO: Link each button to real PDF file later */}
               <button className="bg-yellow-400 text-slate-900 px-4 py-2 rounded-lg font-semibold hover:bg-yellow-300 transition">
                 Download PDF
