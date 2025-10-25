@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CoreBits — Malaysia-Based Cloud Mining Agency",
+  title: "CoreBits — Cloud Mining Agency",
   description: "Trusted cloud mining with transparency, security, and global access.",
 };
 
