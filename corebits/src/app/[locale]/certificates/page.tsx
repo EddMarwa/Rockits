@@ -14,9 +14,9 @@ export default async function Certificates({ params }: { params: Promise<{ local
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <section className="mb-10">
           <h1 className="text-3xl font-semibold mb-2">Our Legal Standing</h1>
-          <p className="opacity-80">CoreBits operates transparently and is registered under Malaysian regulations.</p>
+          <p className="opacity-80">CoreBits operates transparently and is registered under applicable regulations.</p>
           <p className="opacity-70 mt-2">Our licenses and certifications are shared publicly to demonstrate our operational legitimacy.</p>
-          {/* TODO: Add header banner or legal-themed image here (e.g., documents, Malaysian flag) */}
+          {/* TODO: Add header banner or legal-themed image here (e.g., documents) */}
         </section>
 
         <section className="mb-10">
