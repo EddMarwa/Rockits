@@ -37,7 +37,7 @@ export default async function ContactPage() {
             <section>
               <h2 className="text-lg font-semibold text-yellow-400 mb-2">Visit Us</h2>
               {/* TODO: Replace with real address */}
-              <p className="text-slate-300">Kuala Lumpur, Malaysia</p>
+              <p className="text-slate-300">Contact us for office locations</p>
             </section>
             <section>
               <h2 className="text-lg font-semibold text-yellow-400 mb-2">Follow</h2>
