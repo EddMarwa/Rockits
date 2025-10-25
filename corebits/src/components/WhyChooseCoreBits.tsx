@@ -53,11 +53,11 @@ export default function WhyChooseCoreBits() {
       badgeComment: "// TODO: Add small payout graph or animation placeholder"
     },
     {
-      title: "Malaysia Registered Business",
-      description: "Legally registered and compliant under Malaysian authorities, guaranteeing transparent and ethical operations.",
+      title: "Registered Business",
+      description: "Legally registered and compliant with relevant authorities, guaranteeing transparent and ethical operations.",
       icon: Shield,
       badge: "Gov. Registered – 2025",
-      iconComment: "// TODO: Add Malaysia flag or certificate image placeholder",
+      iconComment: "// TODO: Add registration certificate or verified badge placeholder",
       badgeComment: "// TODO: Add registration badge visual"
     },
     {
