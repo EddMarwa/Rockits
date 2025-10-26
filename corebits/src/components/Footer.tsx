@@ -47,9 +47,12 @@ export default function Footer({ dict, locale: propLocale }: FooterProps) {
         <div className="flex flex-col items-end gap-4">
           <div className="w-full">
             <div className="font-semibold">Legal & Documents</div>
-            <div className="mt-2 flex gap-3 justify-end">
+            <div className="mt-2 flex gap-3 justify-end flex-wrap">
               <Link href={`/${locale}/legal`} className="text-sm hover:underline">Certificates</Link>
               <Link href={`/${locale}/legal`} className="text-sm hover:underline">Reports</Link>
+              <Link href={`/${locale}/legal/privacy`} className="text-sm hover:underline">Privacy Policy</Link>
+              <Link href={`/${locale}/legal/terms`} className="text-sm hover:underline">Terms</Link>
+              <Link href={`/${locale}/legal/kyc`} className="text-sm hover:underline">KYC Policy</Link>
             </div>
           </div>
 
