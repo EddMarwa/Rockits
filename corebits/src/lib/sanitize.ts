@@ -24,7 +24,7 @@ function init(): PurifyFn {
     };
 
     return purify as PurifyFn;
-  } catch (err) {
+  } catch {
     // If initialization fails (very unlikely), fall back to a no-op sanitizer to avoid crashing the server.
     // This is defensive — you may prefer to rethrow in stricter environments.
     purify = (html: string) => html;
