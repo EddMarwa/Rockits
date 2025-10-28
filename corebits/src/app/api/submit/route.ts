@@ -66,7 +66,7 @@ export async function POST(request: Request) {
       const json = text ? JSON.parse(text) : null;
       if (!res.ok) return NextResponse.json({ ok: false, error: json && json.error ? json.error : `Upstream HTTP ${res.status}` }, { status: 502 });
       return NextResponse.json(json || { ok: true });
-    } catch (err) {
+    } catch {
       if (!res.ok) return NextResponse.json({ ok: false, error: `Upstream HTTP ${res.status}` }, { status: 502 });
       return NextResponse.json({ ok: true, result: text });
     }
