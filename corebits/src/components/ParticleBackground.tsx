@@ -2,6 +2,7 @@
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import { useCallback } from "react";
+import type { RecursivePartial, IOptions } from "tsparticles-engine";
 
 // Particle background component (client-side)
 // Renders a subtle network of glowing particles connected by thin golden lines.
@@ -13,7 +14,7 @@ export default function ParticleBackground() {
     await loadFull(main);
   }, []);
 
-  const options = {
+  const options: RecursivePartial<IOptions> = {
     fullScreen: { enable: false }, // we render into a positioned container
     background: { color: { value: "#0f0f0f" } },
     fpsLimit: 60,
@@ -59,7 +60,7 @@ export default function ParticleBackground() {
         },
       },
     ],
-  } as const;
+  };
 
   return (
     <div id="particles-container">
