@@ -15,8 +15,8 @@ export async function postToProxy(payload: any, timeoutMs = 8000) {
     });
     clearTimeout(id);
     const text = await res.text();
-    let json: any = null;
-    try { json = text ? JSON.parse(text) : null; } catch (_) { json = null; }
+  let json: any = null;
+  try { json = text ? JSON.parse(text) : null; } catch { json = null; }
     if (!res.ok) {
       const message = (json && json.error) ? json.error : `HTTP ${res.status}`;
       return { ok: false, error: message };
