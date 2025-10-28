@@ -1,6 +1,7 @@
 import LandingNavbar from '@/components/LandingNavbar';
 import Footer from '@/components/Footer';
 import FadeCard from '@/components/FadeCard';
+import ContactFormInline from '@/components/ContactFormInline';
 import { defaultLocale, getDictionary } from '@/i18n';
 
 export const revalidate = 1800;
@@ -23,13 +24,8 @@ export default async function ContactPage() {
           {/* Form */}
           <FadeCard delay={0.02} className="md:col-span-2 bg-[#1E293B] rounded-2xl p-6">
             {/* TODO: Replace with integrated form handler / API route */}
-            <form onSubmit={(e) => e.preventDefault()} className="grid gap-4">
-              <input className="rounded-lg bg-[#0F172A]/60 border border-slate-700 px-4 py-3 placeholder:text-slate-500" placeholder="Your Name" />
-              <input className="rounded-lg bg-[#0F172A]/60 border border-slate-700 px-4 py-3 placeholder:text-slate-500" placeholder="Email Address" type="email" />
-              <textarea className="rounded-lg bg-[#0F172A]/60 border border-slate-700 px-4 py-3 placeholder:text-slate-500" placeholder="Message" rows={6} />
-              <button className="bg-yellow-400 text-slate-900 font-semibold px-5 py-3 rounded-lg hover:bg-yellow-300 transition w-fit">Send Message</button>
-              {/* TODO: Hook up form submission, show success/error states */}
-            </form>
+            {/* Contact form moved to a client component to host event handlers */}
+            <ContactFormInline />
           </FadeCard>
 
           {/* Info */}
