@@ -1,6 +1,5 @@
 import Plans from '@/app/plans/page';
 import type { Locale } from '@/types/i18n';
-import { getDictionary } from '@/i18n';
 
 export const revalidate = 3600;
 

@@ -20,7 +20,7 @@ export default async function Legal({ params }: { params: Promise<{ locale: Loca
         .filter((f) => f.toLowerCase().endsWith('.pdf'))
         .map((f) => ({ file: f, title: f.replace(/[-_]/g, ' ').replace(/\.pdf$/i, '') }));
     }
-  } catch (e) {
+  } catch {
     docs = [];
   }
 
