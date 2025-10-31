@@ -4,7 +4,6 @@ export function isValidEmail(email: string) {
 }
 
 
-
 export async function postToProxy(payload: any, timeoutMs = 8000) {
   const controller = new AbortController();
   const id = setTimeout(() => controller.abort(), timeoutMs);
