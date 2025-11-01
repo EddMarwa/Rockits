@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import LandingNavbar from '@/components/LandingNavbar';
+import ParticleBackground from '@/components/ParticleBackground';
 import Footer from '@/components/Footer';
 import NotifyForm from '@/components/NotifyForm';
 
@@ -83,7 +84,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50">
-  <LandingNavbar locale="en" />
+      <ParticleBackground />
+      <LandingNavbar locale="en" />
       
       {/* Hero Section */}
       <section className="relative min-h-screen bg-gradient-to-br from-slate-800 to-slate-950 flex items-center justify-center px-6 md:px-12">
