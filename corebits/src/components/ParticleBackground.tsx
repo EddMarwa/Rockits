@@ -1,5 +1,6 @@
 "use client";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { usePathname } from 'next/navigation';
 import type { RecursivePartial, IOptions } from "tsparticles-engine";
 import getParticleSettings from "@/lib/particleConfig";
 
@@ -29,24 +30,28 @@ export default function ParticleBackground() {
 
   const [settings, setSettings] = useState(() => ({ intensity: 12, count: 70 }));
 
+  // Watch the active pathname so particles reconfigure when the route changes
+  const pathname = usePathname();
+
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    // load component & engine lazily
+    // load component & engine lazily (try again on route change)
     let mounted = true;
     (async () => {
       try {
         const [{ default: Particles }, tsp] = await Promise.all([import('react-tsparticles'), import('tsparticles')]);
         if (!mounted) return;
         setParticlesComp(() => Particles);
-        loadFullRef.current = tsp.loadFull || tsp.loadFull as any; // best-effort
-      } catch {
-        // swallow import errors - component will simply not render
+        loadFullRef.current = (tsp && (tsp.loadFull || (tsp as any).loadFull)) as any; // best-effort
+      } catch (err) {
+        // keep silent but preserve debugging in dev
+        if (process.env.NODE_ENV === 'development') console.debug('tsparticles import failed', err);
       }
     })();
 
     // determine per-route settings
-    const s = getParticleSettings(window.location.pathname || '/');
+    const s = getParticleSettings(pathname || window.location.pathname || '/');
     setSettings(s as any);
 
     // enabled state from localStorage
@@ -109,7 +114,7 @@ export default function ParticleBackground() {
       window.removeEventListener('pointerleave', onLeave as any);
       window.removeEventListener('particles:toggle', onToggle as EventListener);
     };
-  }, []);
+  }, [pathname]);
 
   const options: RecursivePartial<IOptions> = {
     fullScreen: { enable: false }, // we render into a positioned container
