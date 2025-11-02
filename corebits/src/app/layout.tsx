@@ -30,7 +30,7 @@ export default function RootLayout({
       >
   {/* Particle background is a client-side component positioned behind all content */}
   <ParticleBackground />
-        {children}
+    <div className="relative z-10">{children}</div>
       </body>
     </html>
   );
