@@ -25,7 +25,7 @@ export default function Plans({ locale = 'en' }: Props) {
     { tier: 'Bronze', price: '$100', hashPower: '200 GH/s', duration: 90, roi: 150, description: 'Steady growth plan', features: ['Higher hash rate', 'Priority support', 'Auto reinvestment'] },
     { tier: 'Silver', price: '$500', hashPower: '1 TH/s', duration: 120, roi: 180, description: 'Balanced investment', features: ['Premium support', 'Advanced analytics', 'Flexible terms'] },
     { tier: 'Gold', price: '$1000', hashPower: '2.5 TH/s', duration: 150, roi: 200, description: 'Professional mining', features: ['Maximum efficiency', 'Dedicated manager', 'Custom solutions'] },
-    { tier: 'Platinum', price: '$1500', hashPower: '3.5 TH/s', duration: 170, roi: 230, description: 'Elite-grade performance', features: ['VIP priority payouts', 'Referral bonus', 'Audit-backed rewards'] }
+  { tier: 'Platinum', price: '$1500', hashPower: '3.5 TH/s', duration: 170, roi: 230, description: 'High-performance', features: ['VIP priority payouts', 'Referral bonus', 'Audit-backed rewards'] }
   ];
 
   const staggerContainer = {

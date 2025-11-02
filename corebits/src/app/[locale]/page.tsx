@@ -73,7 +73,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
             {[
               { name: 'Starter Plan', price: '$30', ths: '2.5 TH/s', profit: '2–3% daily', duration: '30 Days' },
               { name: 'Pro Miner', price: '$150', ths: '10 TH/s', profit: '3.5–4% daily', duration: '60 Days' },
-              { name: 'Elite Rig', price: '$700', ths: '50 TH/s', profit: '5–6% daily', duration: '90 Days' }
+              { name: 'Professional Rig', price: '$700', ths: '50 TH/s', profit: '5–6% daily', duration: '90 Days' }
             ].map((p) => (
               <div key={p.name} className="rounded-2xl p-[2px] bg-gradient-to-r from-[#004B87] to-[#FFD700]">
                 <div className="rounded-2xl bg-white dark:bg-slate-900 text-black dark:text-white p-6 h-full flex flex-col shadow-sm">
