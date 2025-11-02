@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { motion, useAnimation, useReducedMotion } from 'framer-motion';
 import Link from 'next/link';
 import LandingNavbar from '@/components/LandingNavbar';
-import ParticleBackground from '@/components/ParticleBackground';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
 import { Shield, Globe, Calendar, Lock, Download, ExternalLink, Check, Bitcoin, Zap, Clock, Star } from 'lucide-react';
@@ -185,7 +184,6 @@ export default function Plans({ locale = 'en' }: Props) {
 
   return (
     <div className="min-h-screen bg-[#0F172A]">
-      <ParticleBackground />
       <LandingNavbar locale={locale} />
       
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
