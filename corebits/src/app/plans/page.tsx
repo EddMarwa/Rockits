@@ -25,10 +25,7 @@ export default function Plans({ locale = 'en' }: Props) {
     { tier: 'Bronze', price: '$100', hashPower: '200 GH/s', duration: 90, roi: 150, description: 'Steady growth plan', features: ['Higher hash rate', 'Priority support', 'Auto reinvestment'] },
     { tier: 'Silver', price: '$500', hashPower: '1 TH/s', duration: 120, roi: 180, description: 'Balanced investment', features: ['Premium support', 'Advanced analytics', 'Flexible terms'] },
     { tier: 'Gold', price: '$1000', hashPower: '2.5 TH/s', duration: 150, roi: 200, description: 'Professional mining', features: ['Maximum efficiency', 'Dedicated manager', 'Custom solutions'] },
-    { tier: 'Platinum', price: '$1500', hashPower: '3.5 TH/s', duration: 170, roi: 230, description: 'Elite-grade performance', features: ['VIP priority payouts', 'Referral bonus', 'Audit-backed rewards'] },
-    { tier: 'Diamond', price: '$3000', hashPower: '5 TH/s', duration: 180, roi: 250, description: 'Enterprise level', features: ['VIP treatment', 'Exclusive access', 'White-label options'] },
-    { tier: 'Elite', price: '$5000', hashPower: '10 TH/s', duration: 220, roi: 300, description: 'Ultimate investment package', features: ['Private mining node', 'Custom ROI structure', 'Dedicated account manager'] },
-    { tier: 'Ultra', price: '$8000', hashPower: '15 TH/s', duration: 240, roi: 350, description: 'Institutional-grade power', features: ['Enterprise SLA', 'Custom integrations', 'Priority provisioning'] }
+    { tier: 'Platinum', price: '$1500', hashPower: '3.5 TH/s', duration: 170, roi: 230, description: 'Elite-grade performance', features: ['VIP priority payouts', 'Referral bonus', 'Audit-backed rewards'] }
   ];
 
   const staggerContainer = {
