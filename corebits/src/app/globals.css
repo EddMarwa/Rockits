@@ -15,7 +15,8 @@ html {
   inset: 0; /* top:0; right:0; bottom:0; left:0 */
   width: 100%;
   height: 100%;
-  z-index: 1; /* put particles above the page background but behind interactive content */
+  /* place particles above the page background and above text (overlay) */
+  z-index: 20;
   pointer-events: none; /* let clicks pass through */
 }
 
@@ -27,6 +28,8 @@ html {
   width: 100%;
   height: 100%;
   pointer-events: none;
+  /* slightly transparent so underlying text remains readable */
+  opacity: 0.65;
 }
 
 /* Small performance tweaks */
