@@ -1,6 +1,7 @@
 "use client";
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import LandingNavbar from '@/components/LandingNavbar';
 import Footer from '@/components/Footer';
 import WhyChooseCoreBits from '@/components/WhyChooseCoreBits';
@@ -118,9 +119,16 @@ export default function About() {
             </div>
             
             <div className="relative">
-              <div className="bg-slate-800 rounded-2xl p-8 h-96 flex items-center justify-center">
-                <div className="text-center text-slate-500">
-                  <div className="text-sm">{/* TODO: Add image related to mining facility */}</div>
+              <div className="bg-slate-800 rounded-2xl p-4 h-96 flex items-center justify-center">
+                <div className="relative w-full h-full">
+                  {/* body image placed beside Mission & Vision; file is public/images/logos/body img.png */}
+                  <Image
+                    src="/images/logos/body%20img.png"
+                    alt="CoreBits facility"
+                    fill
+                    className="object-contain rounded-lg"
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                  />
                 </div>
               </div>
             </div>
