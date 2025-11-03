@@ -15,6 +15,8 @@ type ParticlesCompType = any;
 export default function ParticleBackground() {
   const [ParticlesComp, setParticlesComp] = useState<ParticlesCompType | null>(null);
   const loadFullRef = useRef<any>(null);
+  const [debugMode, setDebugMode] = useState(false);
+  const [overlayMode, setOverlayMode] = useState(false);
 
   const particlesInit = useCallback(async (main: any) => {
     // loadFull brings all tsparticles features - for smaller bundles you can load only required features
@@ -36,6 +38,13 @@ export default function ParticleBackground() {
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
+    // Read debug/overlay flags from URL params (e.g., ?particles_debug=1, ?particles_overlay=1)
+    try {
+      const params = new URLSearchParams(window.location.search || '');
+      setDebugMode(params.get('particles_debug') === '1');
+      setOverlayMode(params.get('particles_overlay') === '1');
+    } catch {}
+
     // load component & engine lazily (try again on route change)
     let mounted = true;
     (async () => {
@@ -51,7 +60,7 @@ export default function ParticleBackground() {
     })();
 
     // determine per-route settings
-    const s = getParticleSettings(pathname || window.location.pathname || '/');
+  const s = getParticleSettings(pathname || window.location.pathname || '/');
     setSettings(s as any);
 
     // enabled state from localStorage
@@ -167,10 +176,10 @@ export default function ParticleBackground() {
     ],
   };
 
-  if (!enabled) return <div ref={containerRef} id="particles-container" />;
+  if (!enabled) return <div ref={containerRef} id="particles-container" className={`${overlayMode ? 'particles-overlay' : ''} ${debugMode ? 'particles-debug' : ''}`} />;
 
   return (
-    <div id="particles-container" ref={containerRef}>
+    <div id="particles-container" ref={containerRef} className={`${overlayMode ? 'particles-overlay' : ''} ${debugMode ? 'particles-debug' : ''}`}>
       {/* #tsparticles is targeted by global CSS to sit behind content */}
       {ParticlesComp ? (
         // render dynamically-loaded Particles component
