@@ -41,8 +41,13 @@ export default function ParticleBackground() {
     // Read debug/overlay flags from URL params (e.g., ?particles_debug=1, ?particles_overlay=1)
     try {
       const params = new URLSearchParams(window.location.search || '');
-      setDebugMode(params.get('particles_debug') === '1');
-      setOverlayMode(params.get('particles_overlay') === '1');
+      const paramDebug = params.get('particles_debug') === '1';
+      const paramOverlay = params.get('particles_overlay') === '1';
+      setDebugMode(paramDebug);
+      // Auto-enable overlay mode on home ('/') and any about page (e.g. '/en/about' or '/about'), unless explicitly disabled
+      const p = pathname || window.location.pathname || '/';
+      const autoOverlay = p === '/' || p.includes('/about');
+      setOverlayMode(paramOverlay || autoOverlay);
     } catch {}
 
     // load component & engine lazily (try again on route change)

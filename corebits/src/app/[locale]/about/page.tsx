@@ -119,16 +119,25 @@ export default function About() {
             </div>
             
             <div className="relative">
-              <div className="bg-slate-800 rounded-2xl p-4 h-96 flex items-center justify-center">
-                <div className="relative w-full h-full">
+              {/* container with very small inset (0.1cm) between image and border */}
+              <div className="bg-slate-800 rounded-2xl p-[0.1cm] h-96 flex items-center justify-center">
+                {/* make the inner wrapper overflow-hidden so the image can fill and touch the edges */}
+                <div className="relative w-full h-full overflow-hidden rounded-lg">
                   {/* body image placed beside Mission & Vision; file is public/images/logos/body img.png */}
-                  <Image
-                    src="/images/logos/body%20img.png"
-                    alt="CoreBits facility"
-                    fill
-                    className="object-contain rounded-lg"
-                    sizes="(min-width: 1024px) 50vw, 100vw"
-                  />
+                  <motion.div
+                    className="relative w-full h-full"
+                    animate={{ y: [0, -6, 0] }}
+                    transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    <Image
+                      src="/images/logos/body%20img.png"
+                      alt="CoreBits facility"
+                      fill
+                      className="object-cover"
+                      sizes="(min-width: 1024px) 50vw, 100vw"
+                    />
+                  </motion.div>
                 </div>
               </div>
             </div>

@@ -1,5 +1,6 @@
 "use client";
 import Link from 'next/link';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
@@ -22,7 +23,10 @@ export default function LandingNavbar({ locale: propLocale }: Props) {
   return (
     <header className={`sticky top-0 z-50 transition-colors ${scrolled ? 'backdrop-blur bg-[#0F172A]/70 border-b border-white/10' : 'bg-transparent'}`}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-  <Link href={`/${locale}`} className="font-bold text-xl">CoreBits</Link>
+  <Link href={`/${locale}`} className="flex items-center gap-3">
+    <Image src="/images/logos/logo.png" alt="CoreBits logo" width={40} height={40} className="rounded" />
+    <span className="font-bold text-xl">CoreBits</span>
+  </Link>
         {/* TODO: Add CoreBits logo image here later (optional) */}
         <nav className="hidden md:flex items-center gap-6 text-sm">
           <Link 
