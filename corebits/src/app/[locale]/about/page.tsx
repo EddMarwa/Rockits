@@ -1,10 +1,82 @@
 "use client";
 import { motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import LandingNavbar from '@/components/LandingNavbar';
 import Footer from '@/components/Footer';
 import WhyChooseCoreBits from '@/components/WhyChooseCoreBits';
+
+type FlipCardProps = {
+  frontSrc: string;
+  frontAlt?: string;
+  backSrc: string;
+  backAlt?: string;
+  frontScale?: number; // 0-1 scale applied to front image to reduce cropping
+};
+
+function FlipCard({ frontSrc, frontAlt = '', backSrc, backAlt = '', frontScale = 0.95 }: FlipCardProps) {
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const handle = (e: MediaQueryListEvent | MediaQueryList) => setReducedMotion(Boolean('matches' in e ? e.matches : mq.matches));
+    handle(mq);
+    if (mq.addEventListener) mq.addEventListener('change', handle as EventListener);
+    else mq.addListener(handle as any);
+    return () => {
+      if (mq.removeEventListener) mq.removeEventListener('change', handle as EventListener);
+      else mq.removeListener(handle as any);
+    };
+  }, []);
+
+  const animateProp = reducedMotion ? { rotateY: 0 } : { rotateY: [0, -360] };
+  const transitionProp = reducedMotion ? undefined : { duration: 12, repeat: Infinity, ease: 'linear' };
+  const hoverProp = reducedMotion ? undefined : { rotateY: 180, scale: 1.02, transition: { duration: 0.45 } };
+
+  const scaleClass = frontScale === 0.95 ? 'scale-95' : frontScale === 0.9 ? 'scale-90' : '';
+
+  return (
+    <motion.div
+      className={`relative w-full h-full [transform-style:preserve-3d]`}
+      animate={animateProp}
+      transition={transitionProp as any}
+      whileHover={hoverProp}
+    >
+      {/* Front face (body image) - slightly scaled down to reduce cropping */}
+      <div className="absolute inset-0 w-full h-full rounded-2xl overflow-hidden [backface-visibility:hidden] flex items-center justify-center">
+        <div className={`relative w-full h-full ${scaleClass}`}>
+          <Image
+            src={frontSrc}
+            alt={frontAlt}
+            fill
+            className="object-cover object-center"
+            sizes="(min-width: 1024px) 50vw, 100vw"
+          />
+        </div>
+      </div>
+
+      {/* Back face (logo) - rotated 180deg so it appears when the card flips */}
+      <div
+        className="absolute inset-0 w-full h-full flex items-center justify-center [transform:rotateY(180deg)] [backface-visibility:hidden] [-webkit-backface-visibility:hidden]"
+      >
+        <div className="relative w-2/3 h-2/3 rounded-lg overflow-hidden border-4 border-yellow-400 shadow-[0_10px_30px_rgba(250,204,21,0.12)] bg-slate-900 flex items-center justify-center">
+          <Image
+            src={backSrc}
+            alt={backAlt}
+            fill
+            className="object-contain"
+            sizes="(min-width: 1024px) 25vw, 50vw"
+          />
+          {/* subtle text overlay */}
+          <div className="absolute inset-0 flex items-end justify-center pb-4 pointer-events-none">
+            <span className="text-yellow-300 text-sm font-semibold drop-shadow-md">CoreBits</span>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
 
 export default function About() {
   const dict = {
@@ -92,8 +164,17 @@ export default function About() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUpVariants}
-            className="grid lg:grid-cols-2 gap-12 items-center"
+            className="grid lg:grid-cols-3 gap-12 items-center"
           >
+            {/* Left flip card (visible on lg+) */}
+            <div className="hidden lg:flex items-center justify-center">
+              <div className="bg-slate-800 rounded-2xl p-[0.1cm] h-72 w-full flex items-center justify-center">
+                <div className="relative w-full h-full flex items-center justify-center [perspective:1200px]">
+                  <FlipCard frontSrc="/images/logos/logo.png" frontAlt="CoreBits logo" backSrc="/images/logos/body%20img.png" backAlt="CoreBits facility" frontScale={0.9} />
+                </div>
+              </div>
+            </div>
+
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-slate-50 mb-8">
                 Our Mission & Vision
@@ -119,25 +200,12 @@ export default function About() {
             </div>
             
             <div className="relative">
-              {/* container with very small inset (0.1cm) between image and border */}
+              {/* flip-card container: restore small inset (0.1cm) for a framed look */}
               <div className="bg-slate-800 rounded-2xl p-[0.1cm] h-96 flex items-center justify-center">
-                {/* make the inner wrapper overflow-hidden so the image can fill and touch the edges */}
-                <div className="relative w-full h-full overflow-hidden rounded-lg">
-                  {/* body image placed beside Mission & Vision; file is public/images/logos/body img.png */}
-                  <motion.div
-                    className="relative w-full h-full"
-                    animate={{ y: [0, -6, 0] }}
-                    transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-                    whileHover={{ scale: 1.02 }}
-                  >
-                    <Image
-                      src="/images/logos/body%20img.png"
-                      alt="CoreBits facility"
-                      fill
-                      className="object-cover"
-                      sizes="(min-width: 1024px) 50vw, 100vw"
-                    />
-                  </motion.div>
+                {/* perspective wrapper */}
+                <div className="relative w-full h-full flex items-center justify-center [perspective:1200px]">
+                  {/* rotating card: preserve-3d so front/back faces render correctly */}
+                  <FlipCard frontSrc="/images/logos/body%20img.png" frontAlt="CoreBits facility" backSrc="/images/logos/logo.png" backAlt="CoreBits logo" frontScale={0.95} />
                 </div>
               </div>
             </div>
