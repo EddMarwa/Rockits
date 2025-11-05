@@ -1,6 +1,7 @@
 "use client";
 import { useState } from 'react';
 import Link from 'next/link';
+import { FiDownload } from 'react-icons/fi';
 import type { Locale } from '@/types/i18n';
 
 function ExpandCard({ title, children }: { title: string; children: React.ReactNode }) {
@@ -35,8 +36,14 @@ export default function TransparencyLegal({ locale }: { locale: Locale }) {
         <ExpandCard title="Business Certificates">
           {/* TODO: Add certificate icon or image beside each download */}
           <div className="flex flex-wrap gap-3">
-            <a href="/certificates/sample-1.pdf" className="px-3 py-2 rounded border border-white/15 hover:bg-white/5 text-xs">Download PDF 1</a>
-            <a href="/certificates/sample-2.pdf" className="px-3 py-2 rounded border border-white/15 hover:bg-white/5 text-xs">Download PDF 2</a>
+            <a href="/certificates/sample-1.pdf" className="px-3 py-2 rounded border border-white/15 hover:bg-white/5 text-xs inline-flex items-center gap-2">
+              <FiDownload className="w-4 h-4 text-[#EAB308]" />
+              <span>Download PDF 1</span>
+            </a>
+            <a href="/certificates/sample-2.pdf" className="px-3 py-2 rounded border border-white/15 hover:bg-white/5 text-xs inline-flex items-center gap-2">
+              <FiDownload className="w-4 h-4 text-[#EAB308]" />
+              <span>Download PDF 2</span>
+            </a>
           </div>
         </ExpandCard>
         <ExpandCard title="Transparency Reports">
