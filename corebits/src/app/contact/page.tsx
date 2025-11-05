@@ -3,6 +3,7 @@ import Footer from '@/components/Footer';
 import FadeCard from '@/components/FadeCard';
 import ContactFormInline from '@/components/ContactFormInline';
 import { defaultLocale, getDictionary } from '@/i18n';
+import { FaTelegramPlane, FaTwitter, FaLinkedin } from 'react-icons/fa';
 
 export const revalidate = 1800;
 
@@ -37,11 +38,16 @@ export default async function ContactPage() {
             </section>
             <section>
               <h2 className="text-lg font-semibold text-yellow-400 mb-2">Follow</h2>
-              {/* TODO: Add social icons/images */}
               <div className="flex gap-3 text-sm">
-                <a className="px-3 py-1 rounded border border-slate-700 hover:bg-slate-700/40" href="#">Telegram</a>
-                <a className="px-3 py-1 rounded border border-slate-700 hover:bg-slate-700/40" href="#">X</a>
-                <a className="px-3 py-1 rounded border border-slate-700 hover:bg-slate-700/40" href="#">LinkedIn</a>
+                <a aria-label="Telegram" className="p-2 rounded border border-slate-700 hover:bg-slate-700/40 flex items-center justify-center" href="#">
+                  <FaTelegramPlane className="w-5 h-5 text-yellow-400" />
+                </a>
+                <a aria-label="X" className="p-2 rounded border border-slate-700 hover:bg-slate-700/40 flex items-center justify-center" href="#">
+                  <FaTwitter className="w-5 h-5 text-yellow-400" />
+                </a>
+                <a aria-label="LinkedIn" className="p-2 rounded border border-slate-700 hover:bg-slate-700/40 flex items-center justify-center" href="#">
+                  <FaLinkedin className="w-5 h-5 text-yellow-400" />
+                </a>
               </div>
             </section>
             <section>
