@@ -1,6 +1,45 @@
 "use client";
 import { motion } from 'framer-motion';
-import { Lock, Calendar, Shield, Globe } from 'lucide-react';
+import { Lock, Calendar, Shield, Globe, Server, Check } from 'lucide-react';
+import React from 'react';
+
+function VerifiedBadge() {
+  return (
+    <div className="inline-flex items-center gap-2 text-xs text-yellow-300">
+      <Check className="w-3 h-3 text-yellow-300" />
+      <span className="font-medium">Verified</span>
+    </div>
+  );
+}
+
+function PayoutSparkline() {
+  // simple sparkline using SVG; animate via framer-motion
+  return (
+    <svg width="80" height="20" viewBox="0 0 80 20" className="opacity-90">
+      <polyline
+        fill="none"
+        stroke="#EAB308"
+        strokeWidth={1.6}
+        strokeLinecap="round"
+        points="0,14 10,12 20,8 30,10 40,6 50,8 60,4 70,6 80,2"
+        className="transition-all"
+      />
+    </svg>
+  );
+}
+
+function MiniMap() {
+  return (
+    <svg width="80" height="40" viewBox="0 0 80 40" className="opacity-80">
+      <rect x="0" y="0" width="80" height="40" rx="4" fill="transparent" />
+      <circle cx="20" cy="12" r="2" fill="#EAB308" />
+      <circle cx="40" cy="8" r="2" fill="#EAB308" />
+      <circle cx="60" cy="20" r="2" fill="#EAB308" />
+      <circle cx="30" cy="28" r="2" fill="#EAB308" />
+      <path d="M20 12 L40 8 L60 20 L30 28" stroke="#EAB308" strokeWidth="0.5" fill="none" strokeDasharray="2 2" />
+    </svg>
+  );
+}
 
 export default function WhyChooseCoreBits() {
   const fadeUpVariants = {
@@ -39,34 +78,34 @@ export default function WhyChooseCoreBits() {
     {
       title: "Secure Cloud Mining",
       description: "CoreBits leverages secure, energy-efficient mining infrastructure designed for maximum uptime and transparency.",
-      icon: Lock,
+      icon: Server,
       badge: "99.9% Uptime Verified",
-      iconComment: "// TODO: Add mining rack or blockchain security icon",
-      badgeComment: "// TODO: Add small verified badge graphic"
+      badgeVisual: <VerifiedBadge />,
+      visual: null
     },
     {
       title: "Daily Profit Distribution",
       description: "Rewards are distributed daily using automated smart allocation — ensuring users earn consistently without delays.",
       icon: Calendar,
       badge: "Instant Payouts Enabled",
-      iconComment: "// TODO: Add calendar or payout icon",
-      badgeComment: "// TODO: Add small payout graph or animation placeholder"
+      badgeVisual: null,
+      visual: <PayoutSparkline />
     },
     {
       title: "Registered Business",
       description: "Legally registered and compliant with relevant authorities, guaranteeing transparent and ethical operations.",
       icon: Shield,
       badge: "Gov. Registered – 2025",
-      iconComment: "// TODO: Add registration certificate or verified badge placeholder",
-      badgeComment: "// TODO: Add registration badge visual"
+      badgeVisual: <VerifiedBadge />,
+      visual: null
     },
     {
       title: "Global Access",
       description: "Our global infrastructure allows miners and investors from around the world to participate seamlessly in the CoreBits ecosystem.",
       icon: Globe,
       badge: "150+ Countries Supported",
-      iconComment: "// TODO: Add global network image or subtle animation",
-      badgeComment: "// TODO: Add global reach mini-map placeholder"
+      badgeVisual: null,
+      visual: <MiniMap />
     }
   ];
 
@@ -157,7 +196,7 @@ export default function WhyChooseCoreBits() {
                         <IconComponent className="w-8 h-8 text-yellow-400" />
                       </div>
                       <div className="text-xs text-slate-500 italic">
-                        {card.iconComment}
+                        {card.visual ?? null}
                       </div>
                     </div>
 
@@ -175,12 +214,13 @@ export default function WhyChooseCoreBits() {
                     <div className="flex items-center justify-between">
                       <div className="inline-flex items-center px-3 py-1 bg-slate-700/50 rounded-full border border-slate-600 group-hover:border-yellow-400/50 transition-colors duration-300">
                         <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse" />
-                        <span className="text-xs text-slate-300 font-medium">
+                        {card.badgeVisual}
+                        <span className="text-xs text-slate-300 font-medium ml-2">
                           {card.badge}
                         </span>
                       </div>
                       <div className="text-xs text-slate-500 italic">
-                        {card.badgeComment}
+                        {/* leave for any extra notes */}
                       </div>
                     </div>
 
