@@ -6,6 +6,7 @@ import Image from 'next/image';
 import LandingNavbar from '@/components/LandingNavbar';
 import Footer from '@/components/Footer';
 import WhyChooseCoreBits from '@/components/WhyChooseCoreBits';
+import { Shield, Activity, Lock, User, Users, Briefcase } from 'lucide-react';
 
 type FlipCardProps = {
   frontSrc: string;
@@ -242,17 +243,17 @@ export default function About() {
               {
                 title: "High-Efficiency Hashpower",
                 description: "Optimized mining rigs delivering consistent uptime and performance.",
-                icon: "// TODO: Add blockchain or padlock icons"
+                icon: Shield
               },
               {
                 title: "Real-Time Monitoring",
                 description: "Our system monitors power consumption, temperature, and output 24/7.",
-                icon: "// TODO: Add blockchain or padlock icons"
+                icon: Activity
               },
               {
                 title: "Cold & Hot Wallet Security",
                 description: "Client funds and rewards are managed securely through verified wallet custody.",
-                icon: "// TODO: Add blockchain or padlock icons"
+                icon: Lock
               }
             ].map((item, index) => (
               <motion.div
@@ -261,9 +262,10 @@ export default function About() {
                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
                 className="relative bg-slate-800 rounded-2xl p-8 border-t-4 border-yellow-400 hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)] transition-all duration-300"
               >
+                <item.icon className="w-8 h-8 text-yellow-400 mb-4" />
                 <h3 className="text-xl font-semibold text-slate-50 mb-4">{item.title}</h3>
                 <p className="text-slate-400 leading-relaxed">{item.description}</p>
-                <div className="text-xs text-slate-600 mt-4 italic">{item.icon}</div>
+                
               </motion.div>
             ))}
           </motion.div>
@@ -300,25 +302,25 @@ export default function About() {
                 name: "Arif Rahman",
                 title: "Chief Executive Officer",
                 description: "Visionary entrepreneur driving CoreBits' mission to expand sustainable crypto mining in Asia.",
-                icon: "// TODO: Add CEO photo placeholder"
+                icon: User
               },
               {
                 name: "Wei Ling Tan",
                 title: "Head of Operations", 
                 description: "Oversees mining infrastructure and compliance to maintain peak efficiency and transparency.",
-                icon: "// TODO: Add head of ops photo placeholder"
+                icon: User
               },
               {
                 name: "Tech Partners",
                 title: "Global Collaborations",
                 description: "Partnered with leading blockchain providers and pool operators to ensure top-tier performance.",
-                icon: "// TODO: Add partner logos placeholder"
+                icon: Briefcase
               },
               {
                 name: "Advisory Panel",
                 title: "Compliance & Risk Experts",
                 description: "Advisors ensure regulatory compliance and guide responsible mining practices.",
-                icon: "// TODO: Add advisory panel placeholder"
+                icon: Users
               }
             ].map((item, index) => (
               <motion.div
@@ -327,10 +329,10 @@ export default function About() {
                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
                 className="relative bg-slate-800 rounded-2xl p-8 border-t-4 border-yellow-400 hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)] transition-all duration-300"
               >
+                <item.icon className="w-8 h-8 text-yellow-400 mb-4" />
                 <h3 className="text-xl font-semibold text-slate-50 mb-2">{item.name}</h3>
                 <h4 className="text-yellow-400 font-medium mb-4">{item.title}</h4>
                 <p className="text-slate-400 leading-relaxed mb-4">{item.description}</p>
-                <div className="text-xs text-slate-600 italic">{item.icon}</div>
               </motion.div>
             ))}
           </motion.div>
