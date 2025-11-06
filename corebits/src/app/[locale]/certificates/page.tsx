@@ -3,7 +3,7 @@ import Footer from '@/components/Footer';
 import { getDictionary } from '@/i18n';
 import type { Locale } from '@/types/i18n';
 import FadeCard from '@/components/FadeCard';
-import { FiDownload } from 'react-icons/fi';
+import { Download } from 'lucide-react';
 
 export default async function Certificates({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
@@ -31,7 +31,7 @@ export default async function Certificates({ params }: { params: Promise<{ local
                 <div className="font-medium">{c.title}</div>
                 {/* TODO: Add small certificate icon beside each download link */}
                 <a href={c.file} className="mt-3 inline-flex items-center text-[#EAB308] hover:underline text-sm gap-2">
-                  <FiDownload className="w-4 h-4" />
+                  <Download className="w-4 h-4" />
                   <span>Download PDF</span>
                 </a>
               </FadeCard>
