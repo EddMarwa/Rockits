@@ -1,7 +1,10 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import WhyChooseCoreBits from '@/components/WhyChooseCoreBits';
+// explicit vitest imports make editor typecheck happy in some setups
+import { describe, it, expect } from 'vitest';
+// use a relative import to avoid editor/tsserver resolving issues with path alias
+import WhyChooseCoreBits from '../src/components/WhyChooseCoreBits';
 
 describe('WhyChooseCoreBits', () => {
   it('renders the section header and cards', () => {
