@@ -1,42 +1,50 @@
 "use client";
-import { motion } from 'framer-motion';
-import { Lock, Calendar, Shield, Globe, Server, Check } from 'lucide-react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { Lock, Calendar, Shield, Globe, Server, Check, Twitter, Linkedin, Send, Download } from 'lucide-react';
 import React from 'react';
 
 function VerifiedBadge() {
   return (
-    <div className="inline-flex items-center gap-2 text-xs text-yellow-300">
+    <motion.div className="inline-flex items-center gap-2 text-xs text-yellow-300" animate={{ scale: [1, 1.04, 1] }} transition={{ duration: 2, repeat: Infinity }}>
       <Check className="w-3 h-3 text-yellow-300" />
       <span className="font-medium">Verified</span>
-    </div>
+    </motion.div>
   );
 }
 
 function PayoutSparkline() {
-  // simple sparkline using SVG; animate via framer-motion
+  const prefersReduced = useReducedMotion();
+  // animated sparkline path
+  const path = "M0 14 L10 12 L20 8 L30 10 L40 6 L50 8 L60 4 L70 6 L80 2";
+  const length = 220; // approximate path length for dash animation
+
   return (
     <svg width="80" height="20" viewBox="0 0 80 20" className="opacity-90">
-      <polyline
+      <motion.path
+        d={path}
         fill="none"
         stroke="#EAB308"
         strokeWidth={1.6}
         strokeLinecap="round"
-        points="0,14 10,12 20,8 30,10 40,6 50,8 60,4 70,6 80,2"
-        className="transition-all"
+        strokeDasharray={length}
+        strokeDashoffset={prefersReduced ? 0 : length}
+        animate={prefersReduced ? { strokeDashoffset: 0 } : { strokeDashoffset: [length, 0] }}
+        transition={{ duration: 2.2, repeat: Infinity, ease: 'linear' }}
       />
     </svg>
   );
 }
 
-function MiniMap() {
+function InteractiveMap({ onRegionClick }: { onRegionClick?: (id: string) => void }) {
   return (
-    <svg width="80" height="40" viewBox="0 0 80 40" className="opacity-80">
-      <rect x="0" y="0" width="80" height="40" rx="4" fill="transparent" />
-      <circle cx="20" cy="12" r="2" fill="#EAB308" />
-      <circle cx="40" cy="8" r="2" fill="#EAB308" />
-      <circle cx="60" cy="20" r="2" fill="#EAB308" />
-      <circle cx="30" cy="28" r="2" fill="#EAB308" />
-      <path d="M20 12 L40 8 L60 20 L30 28" stroke="#EAB308" strokeWidth="0.5" fill="none" strokeDasharray="2 2" />
+    <svg width="100" height="48" viewBox="0 0 100 48" className="opacity-80">
+      <rect x="0" y="0" width="100" height="48" rx="4" fill="transparent" />
+      {/* clickable regions - these are placeholders, can be wired to links */}
+      <circle cx="18" cy="14" r="3" fill="#EAB308" className="cursor-pointer" onClick={() => onRegionClick?.('asia')} />
+      <circle cx="40" cy="10" r="3" fill="#EAB308" className="cursor-pointer" onClick={() => onRegionClick?.('europe')} />
+      <circle cx="62" cy="22" r="3" fill="#EAB308" className="cursor-pointer" onClick={() => onRegionClick?.('americas')} />
+      <circle cx="32" cy="34" r="3" fill="#EAB308" className="cursor-pointer" onClick={() => onRegionClick?.('africa')} />
+      <path d="M18 14 L40 10 L62 22 L32 34" stroke="#EAB308" strokeWidth="0.5" fill="none" strokeDasharray="2 2" />
     </svg>
   );
 }
@@ -105,7 +113,7 @@ export default function WhyChooseCoreBits() {
       icon: Globe,
       badge: "150+ Countries Supported",
       badgeVisual: null,
-      visual: <MiniMap />
+      visual: <InteractiveMap onRegionClick={(id) => console.log('region clicked', id)} />
     }
   ];
 
