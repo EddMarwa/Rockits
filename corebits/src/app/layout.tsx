@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import ParticleBackground from '@/components/ParticleBackground';
+import dynamic from 'next/dynamic';
+
+// Dynamically import the particle background to defer its JS until the
+// client hydrates. This reduces initial bundle size / LCP impact.
+const ParticleBackground = dynamic(() => import('@/components/ParticleBackground'), { ssr: false });
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
