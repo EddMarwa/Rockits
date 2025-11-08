@@ -14,3 +14,5 @@ describe('WhyChooseCoreBits', () => {
     expect(screen.getByText(/Daily Profit Distribution/i)).toBeInTheDocument();
   });
 });
+
+
