@@ -7,6 +7,14 @@ import { Send, Twitter, Linkedin } from 'lucide-react';
 
 export const revalidate = 1800;
 
+export async function generateMetadata() {
+  const dict = await getDictionary(defaultLocale);
+  return {
+    title: `${dict.contact.title} — CoreBits`,
+    description: dict.contact.address || 'Contact CoreBits for partnerships, support, or media enquiries.'
+  }
+}
+
 export default async function ContactPage() {
   const dict = await getDictionary(defaultLocale);
 
@@ -16,8 +24,8 @@ export default async function ContactPage() {
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <section className="text-center mb-10">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-yellow-400 mb-3">Contact Us</h1>
-          <p className="text-slate-300 max-w-2xl mx-auto">We’re here to help. Reach out for partnerships, support, or media.</p>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-yellow-400 mb-3">{dict.contact.title}</h1>
+          <p className="text-slate-300 max-w-2xl mx-auto">{dict.contact.address}</p>
         </section>
 
         {/* Two-column layout */}
