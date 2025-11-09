@@ -11,7 +11,7 @@ export async function generateStaticParams() {
 }
 
 export const metadata: Metadata = {
-  title: 'CoreBits — Singapore-Based Cloud Mining Agency',
+  title: 'CoreBits — Cloud Mining Agency',
   description: 'Trusted cloud mining with transparency, security, and global access.'
 };
 
