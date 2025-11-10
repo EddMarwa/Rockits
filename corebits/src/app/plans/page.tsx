@@ -257,7 +257,7 @@ export default function Plans({ locale = 'en' }: Props) {
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
                     href={`/${locale}/plans/buy`}
-                    className="flex-1 inline-flex items-center justify-center gap-2 py-3 rounded-lg font-semibold bg-yellow-400 text-[#0F172A] shadow-lg"
+                    className="flex-1 btn-primary"
                   >
                     <Star className="w-4 h-4" /> Buy Hash Power
                   </motion.a>
@@ -331,10 +331,7 @@ export default function Plans({ locale = 'en' }: Props) {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Link 
-                href={`/${locale}`}
-                className="inline-flex items-center px-8 py-4 font-semibold rounded-lg transition-all duration-300 border-2 border-yellow-400 text-yellow-400 bg-transparent"
-              >
+              <Link href={`/${locale}`} className="btn-outline">
                 Back to Home
               </Link>
             </motion.div>
@@ -343,10 +340,7 @@ export default function Plans({ locale = 'en' }: Props) {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Link 
-                href={`/${locale}/about`}
-                className="inline-flex items-center px-8 py-4 font-semibold rounded-lg transition-all duration-300 bg-yellow-400 text-[#0F172A] shadow-lg"
-              >
+              <Link href={`/${locale}/about`} className="btn-primary">
                 Learn More
               </Link>
             </motion.div>
@@ -500,10 +494,7 @@ export default function Plans({ locale = 'en' }: Props) {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Link 
-              href={`/${locale}/contact`}
-              className="inline-flex items-center px-8 py-4 font-semibold rounded-lg shadow-lg transition-all duration-300 bg-yellow-400 text-[#0F172A]"
-            >
+            <Link href={`/${locale}/contact`} className="btn-primary">
               Get Started Now
             </Link>
           </motion.div>
