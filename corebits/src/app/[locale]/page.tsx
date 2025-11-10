@@ -46,10 +46,10 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
           <div>
             <p className="mt-4 text-lg opacity-80">{dict.hero.subheadline}</p>
             <div className="mt-6 flex gap-3">
-              <a href={`/${locale}/plans`} className="inline-block rounded-lg bg-[#004B87] text-white px-5 py-3 hover:opacity-90">
+              <a href={`/${locale}/plans`} className="btn-primary">
                 {dict.hero.cta}
               </a>
-              <a href="#about" className="inline-block rounded-lg border px-5 py-3 hover:bg-black/5">
+              <a href="#about" className="btn-ghost">
                 Learn More
               </a>
             </div>
