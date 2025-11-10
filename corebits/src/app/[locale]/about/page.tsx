@@ -139,14 +139,8 @@ export default function About() {
             <p className="text-xl text-slate-400 mb-8 max-w-4xl mx-auto leading-relaxed">
               At CoreBits, we provide secure, scalable, and transparent cloud mining opportunities for everyone — backed by verified registration and real-time transparency.
             </p>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Link 
-                href={`/${'en'}/certificates`} 
-                className="inline-flex items-center px-8 py-4 bg-yellow-400 text-slate-950 font-semibold rounded-xl hover:shadow-[0_0_30px_rgba(234,179,8,0.4)] transition-all duration-300"
-              >
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Link href={`/${'en'}/certificates`} className="btn-primary">
                 View Certificates
               </Link>
             </motion.div>
@@ -354,17 +348,11 @@ export default function About() {
             <p className="text-xl text-slate-400 mb-8 leading-relaxed">
               Join a growing community of miners, investors, and innovators shaping the future of digital assets with CoreBits.
             </p>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Link 
-                href={`/${'en'}/plans`} 
-                className="inline-flex items-center px-8 py-4 bg-yellow-400 text-slate-950 font-semibold rounded-xl hover:shadow-[0_0_30px_rgba(234,179,8,0.4)] transition-all duration-300"
-              >
-                Explore Mining Plans
-              </Link>
-            </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link href={`/${'en'}/plans`} className="btn-primary">
+                  Explore Mining Plans
+                </Link>
+              </motion.div>
             {/* TODO: Add world map or network background visual */}
           </motion.div>
         </div>
