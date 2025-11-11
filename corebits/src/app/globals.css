@@ -79,14 +79,38 @@ html {
 
 /* Standard CTA button styles used across pages for visual consistency */
 .btn-primary {
-  @apply inline-flex items-center px-6 py-3 font-semibold rounded-lg transition-all duration-300 bg-yellow-400 text-[#0F172A] shadow-lg;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem; /* py-3 px-6 */
+  font-weight: 600; /* font-semibold */
+  border-radius: 0.5rem; /* rounded-lg */
+  transition: all 300ms ease;
+  background-color: #F59E0B; /* approximate Tailwind yellow-400 */
+  color: #0F172A;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
-.btn-primary:hover { @apply shadow-[0_0_30px_rgba(234,179,8,0.4)]; }
+.btn-primary:hover {
+  box-shadow: 0 0 30px rgba(234,179,8,0.4);
+}
 
 .btn-outline {
-  @apply inline-flex items-center px-6 py-3 font-semibold rounded-lg transition-all duration-300 border-2 border-yellow-400 text-yellow-400 bg-transparent;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: all 300ms ease;
+  border: 2px solid #F59E0B;
+  color: #F59E0B;
+  background: transparent;
 }
 
 .btn-ghost {
-  @apply inline-flex items-center px-4 py-2 rounded-lg transition-all duration-200 text-slate-200 hover:text-yellow-400;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem; /* py-2 px-4 */
+  border-radius: 0.5rem;
+  transition: color 200ms ease;
+  color: #E2E8F0; /* text-slate-200 approximate */
 }
+.btn-ghost:hover { color: #F59E0B; }
