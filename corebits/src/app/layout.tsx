@@ -27,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
+      <body suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0F172A] text-[#F1F5F9]`}
       >
   {/* Particle background is a client-side component positioned behind all content */}
