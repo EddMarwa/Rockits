@@ -1,6 +1,6 @@
 "use client";
 import { motion, useReducedMotion } from 'framer-motion';
-import { Lock, Calendar, Shield, Globe, Server, Check, Twitter, Linkedin, Send, Download } from 'lucide-react';
+import { Calendar, Shield, Globe, Server, Check } from 'lucide-react';
 import React from 'react';
 
 function VerifiedBadge() {
