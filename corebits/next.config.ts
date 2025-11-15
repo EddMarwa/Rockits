@@ -1,43 +1,42 @@
 import type { NextConfig } from "next";
 
+// Optional bundle analyzer - enabled with `ANALYZE=true` env var.
+const withBundleAnalyzer = require('@next/bundle-analyzer')({ enabled: process.env.ANALYZE === 'true' || process.env.ANALYZE === '1' });
+
 const nextConfig: NextConfig = {
   output: 'standalone',
   images: {
+    // allow local images from /public and any future remote hosts can be
+    // added here via remotePatterns for next/image optimization.
     remotePatterns: []
   },
-  // Add caching headers for static assets and images to improve repeat load
-  // performance — these are conservative and safe for public assets.
+  // Add caching & basic security headers for static assets and images to
+  // improve repeat load performance and mitigate common risks.
   async headers() {
     return [
       {
         source: '/_next/static/:path*',
         headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable'
-          }
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' }
         ]
       },
       {
         source: '/images/:path*',
         headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable'
-          }
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+          { key: 'X-Content-Type-Options', value: 'nosniff' }
         ]
       },
       {
         source: '/(.*)\.(png|jpg|jpeg|svg|webp|avif)',
         headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable'
-          }
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }
         ]
       }
-    ]
+    ];
   }
 };
 
-export default nextConfig;
+module.exports = withBundleAnalyzer(nextConfig);
