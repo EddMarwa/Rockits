@@ -1,8 +1,14 @@
 "use client";
-import ParticleBackground from "./ParticleBackground";
+import dynamic from 'next/dynamic';
+
+// Dynamically import the heavy `ParticleBackground` inside a Client Component
+// so the module and its large dependencies (react-tsparticles / tsparticles)
+// are only fetched after hydration. This keeps the initial bundle smaller.
+const ParticleBackgroundDyn = dynamic(
+  () => import('./ParticleBackground'),
+  { ssr: false, loading: () => null }
+);
 
 export default function ParticleBackgroundClient() {
-  // This wrapper is a Client Component so we can safely import and render
-  // the client-only `ParticleBackground` from a Server Component.
-  return <ParticleBackground />;
+  return <ParticleBackgroundDyn />;
 }
