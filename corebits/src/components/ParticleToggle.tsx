@@ -13,14 +13,19 @@ export default function ParticleToggle() {
   });
 
   useEffect(() => {
-    // Keep state in sync if other tabs change it
+    // Keep state in sync if other tabs change it. This effect doesn't
+    // depend on `disabled` so it will add the listener once on mount.
     function onStorage(e: StorageEvent) {
       if (e.key === STORAGE_KEY) setDisabled(e.newValue === "1");
     }
     window.addEventListener("storage", onStorage);
-    try { console.debug('[ParticleToggle] mounted, disabled=', disabled); } catch {}
     return () => window.removeEventListener("storage", onStorage);
   }, []);
+
+  // Log disabled state for debugging when it changes (separate effect)
+  useEffect(() => {
+    try { console.debug('[ParticleToggle] mounted, disabled=', disabled); } catch {}
+  }, [disabled]);
 
   function toggle() {
     const next = !disabled;
@@ -33,12 +38,13 @@ export default function ParticleToggle() {
       new CustomEvent("particles:toggle", { detail: { disabled: next } })
     );
   }
-
+/*
   return (
+    
     <button
       type="button"
-  role="switch"
-  aria-checked={disabled}
+    role="switch"
+    aria-checked={disabled}
       aria-label={disabled ? "Enable background animation" : "Disable background animation"}
       title={disabled ? "Enable background animation" : "Disable background animation"}
       onClick={toggle}
@@ -48,5 +54,8 @@ export default function ParticleToggle() {
         {disabled ? "Particles Off" : "Particles On"}
       </span>
     </button>
+    
   );
+  */
 }
+
