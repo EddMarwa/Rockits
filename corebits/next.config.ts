@@ -1,7 +1,16 @@
 import type { NextConfig } from "next";
 
 // Optional bundle analyzer - enabled with `ANALYZE=true` env var.
-const withBundleAnalyzer = require('@next/bundle-analyzer')({ enabled: process.env.ANALYZE === 'true' || process.env.ANALYZE === '1' });
+// If the package isn't installed (e.g., on CI or users who haven't added it),
+// fall back to an identity passthrough so the build still works.
+let withBundleAnalyzer: any = (c: any) => c;
+try {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const _analyzer = require('@next/bundle-analyzer')({ enabled: process.env.ANALYZE === 'true' || process.env.ANALYZE === '1' });
+  withBundleAnalyzer = _analyzer;
+} catch (err) {
+  // bundle analyzer not installed; continue without it
+}
 
 const nextConfig: NextConfig = {
   output: 'standalone',
