@@ -3,7 +3,6 @@
   "builds": [
     { "src": "next.config.ts", "use": "@vercel/next" }
   ],
-  "routes": [],
   "headers": [
     {
       "source": "/_next/static/(.*)",

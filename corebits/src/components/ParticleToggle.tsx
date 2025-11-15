@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const STORAGE_KEY = "particles_disabled";
 
@@ -38,24 +38,18 @@ export default function ParticleToggle() {
       new CustomEvent("particles:toggle", { detail: { disabled: next } })
     );
   }
-/*
   return (
-    
     <button
       type="button"
-    role="switch"
-    aria-checked={disabled}
+      role="switch"
+      aria-checked={disabled}
       aria-label={disabled ? "Enable background animation" : "Disable background animation"}
       title={disabled ? "Enable background animation" : "Disable background animation"}
       onClick={toggle}
       className="fixed right-4 top-4 z-50 inline-flex items-center gap-2 px-3 py-2 rounded bg-black/40 border border-white/60 text-sm text-slate-100 backdrop-blur-sm hover:bg-black/50 transition-colors"
     >
-      <span className="text-xs">
-        {disabled ? "Particles Off" : "Particles On"}
-      </span>
+      <span className="text-xs">{disabled ? "Particles Off" : "Particles On"}</span>
     </button>
-    
   );
-  */
 }
 
