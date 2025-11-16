@@ -29,7 +29,7 @@ export default function ParticleToggle() {
     try { console.debug('[ParticleToggle] mounted, disabled=', disabled); } catch {}
   }, [disabled]);
 
-  function toggle() {
+  const toggle = () => {
     const next = !disabled;
     try {
       localStorage.setItem(STORAGE_KEY, next ? "1" : "0");
@@ -39,7 +39,7 @@ export default function ParticleToggle() {
     window.dispatchEvent(
       new CustomEvent("particles:toggle", { detail: { disabled: next } })
     );
-  }
+  };
   /*
   return (
     <button
