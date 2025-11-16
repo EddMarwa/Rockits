@@ -26,9 +26,9 @@ export default function ParticleBackground() {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   // Parallax & dynamic import of particles
-  const [enabled, setEnabled] = useState<boolean>(() => {
-    try { return localStorage.getItem('particles_disabled') !== '1'; } catch { return true; }
-  });
+  // Start with a safe default and read persisted preference on mount so we
+  // never access `localStorage` during initialization (defensive pattern).
+  const [enabled, setEnabled] = useState<boolean>(true);
 
   const [settings, setSettings] = useState(() => ({ intensity: 12, count: 70 }));
 
@@ -68,8 +68,8 @@ export default function ParticleBackground() {
   const s = getParticleSettings(pathname || window.location.pathname || '/');
     setSettings(s as any);
 
-    // enabled state from localStorage
-    try { setEnabled(localStorage.getItem('particles_disabled') !== '1'); } catch {}
+  // enabled state from localStorage (read on mount only)
+  try { setEnabled(localStorage.getItem('particles_disabled') !== '1'); } catch {}
 
     const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReduced) {

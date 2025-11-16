@@ -4,20 +4,22 @@ import { useEffect, useState } from "react";
 const STORAGE_KEY = "particles_disabled";
 
 export default function ParticleToggle() {
-  const [disabled, setDisabled] = useState<boolean>(() => {
-    try {
-      return localStorage.getItem(STORAGE_KEY) === "1";
-    } catch {
-      return false;
-    }
-  });
+  // Start with a safe default to avoid touching `localStorage` during any
+  // server-side evaluation or before hydration. We'll read the persisted
+  // value on mount.
+  const [disabled, setDisabled] = useState<boolean>(false);
 
   useEffect(() => {
-    // Keep state in sync if other tabs change it. This effect doesn't
-    // depend on `disabled` so it will add the listener once on mount.
+    // On mount, read the persisted state and keep it in sync across tabs.
+    try {
+      const val = localStorage.getItem(STORAGE_KEY);
+      setDisabled(val === "1");
+    } catch {}
+
     function onStorage(e: StorageEvent) {
       if (e.key === STORAGE_KEY) setDisabled(e.newValue === "1");
     }
+
     window.addEventListener("storage", onStorage);
     return () => window.removeEventListener("storage", onStorage);
   }, []);
@@ -42,7 +44,7 @@ export default function ParticleToggle() {
     <button
       type="button"
       role="switch"
-      aria-checked={disabled}
+  aria-checked={disabled ? 'true' : 'false'}
       aria-label={disabled ? "Enable background animation" : "Disable background animation"}
       title={disabled ? "Enable background animation" : "Disable background animation"}
       onClick={toggle}
