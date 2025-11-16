@@ -40,11 +40,12 @@ export default function ParticleToggle() {
       new CustomEvent("particles:toggle", { detail: { disabled: next } })
     );
   }
+  /*
   return (
     <button
       type="button"
-      role="switch"
-  aria-checked={disabled ? 'true' : 'false'}
+    role="switch"
+    aria-checked={disabled}
       aria-label={disabled ? "Enable background animation" : "Disable background animation"}
       title={disabled ? "Enable background animation" : "Disable background animation"}
       onClick={toggle}
@@ -53,5 +54,6 @@ export default function ParticleToggle() {
       <span className="text-xs">{disabled ? "Particles Off" : "Particles On"}</span>
     </button>
   );
+ */
 }
 
