@@ -44,8 +44,7 @@ export default function ParticleToggle() {
   return (
     <button
       type="button"
-      role="switch"
-      aria-checked={disabled}
+      aria-pressed={disabled ? 'true' : 'false'}
       aria-label={disabled ? "Enable background animation" : "Disable background animation"}
       title={disabled ? "Enable background animation" : "Disable background animation"}
       onClick={onToggleClick}
