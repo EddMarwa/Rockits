@@ -68,9 +68,6 @@ export default function ParticleBackground() {
   const s = getParticleSettings(pathname || window.location.pathname || '/');
     setSettings(s as any);
 
-  // enabled state from localStorage (read on mount only)
-  try { setEnabled(localStorage.getItem('particles_disabled') !== '1'); } catch {}
-
     const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReduced) {
       // disable animations and parallax; still allow particles if desired
@@ -111,11 +108,8 @@ export default function ParticleBackground() {
     window.addEventListener('mouseleave', onLeave);
     window.addEventListener('pointerleave', onLeave as any);
 
-    // listen for toggle events from ParticleToggle
-    function onToggle(e: Event) {
-      try { const d = (e as CustomEvent).detail; setEnabled(!d?.disabled ? true : false); } catch { setEnabled(true); }
-    }
-    window.addEventListener('particles:toggle', onToggle as EventListener);
+    // Note: ParticleToggle component removed; particles are controlled by URL params and
+    // prefers-reduced-motion. No cross-window toggle events are listened for anymore.
 
     raf = requestAnimationFrame(tick);
 
@@ -126,7 +120,7 @@ export default function ParticleBackground() {
       window.removeEventListener('pointermove', onMove);
       window.removeEventListener('mouseleave', onLeave);
       window.removeEventListener('pointerleave', onLeave as any);
-      window.removeEventListener('particles:toggle', onToggle as EventListener);
+      // no-op: no toggle listener to remove
     };
   }, [pathname]);
 
