@@ -16,7 +16,7 @@ export default function Home() {
 
   useEffect(() => {
     // Read launch date from env (NEXT_PUBLIC_LAUNCH_DATE) or fallback
-    const launchDateStr = process.env.NEXT_PUBLIC_LAUNCH_DATE || '2025-12-01T00:00:00';
+    const launchDateStr = process.env.NEXT_PUBLIC_LAUNCH_DATE || '2026-02-13T00:00:00+08:00';
     const targetDate = new Date(launchDateStr).getTime();
 
     const timer = setInterval(() => {
