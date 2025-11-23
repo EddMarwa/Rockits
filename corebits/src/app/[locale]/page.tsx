@@ -2,6 +2,7 @@ import { getDictionary } from '@/i18n';
 import LandingNavbar from '@/components/LandingNavbar';
 import Footer from '@/components/Footer';
 import Timer from '@/components/Timer';
+import { LAUNCH_DATE } from '@/lib/launchDate';
 import { locales } from '@/i18n';
 import { Metadata } from 'next';
 import { redirect } from 'next/navigation';
@@ -54,7 +55,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
               </a>
             </div>
             <div className="mt-8">
-              <Timer target="2026-02-13T00:00:00+08:00" label={dict.countdown.label} />
+              <Timer target={LAUNCH_DATE} label={dict.countdown.label} />
             </div>
           </div>  
           <div className="h-64 bg-white rounded-2xl shadow-sm border border-black/10 hidden md:block relative overflow-hidden">

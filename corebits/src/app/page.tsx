@@ -5,6 +5,7 @@ import Link from 'next/link';
 import LandingNavbar from '@/components/LandingNavbar';
 import Footer from '@/components/Footer';
 import NotifyForm from '@/components/NotifyForm';
+import { LAUNCH_DATE } from '@/lib/launchDate';
 
 export default function Home() {
   const [timeLeft, setTimeLeft] = useState({
@@ -16,7 +17,7 @@ export default function Home() {
 
   useEffect(() => {
     // Read launch date from env (NEXT_PUBLIC_LAUNCH_DATE) or fallback
-    const launchDateStr = process.env.NEXT_PUBLIC_LAUNCH_DATE || '2026-02-13T00:00:00+08:00';
+    const launchDateStr = process.env.NEXT_PUBLIC_LAUNCH_DATE || LAUNCH_DATE;
     const targetDate = new Date(launchDateStr).getTime();
 
     const timer = setInterval(() => {
