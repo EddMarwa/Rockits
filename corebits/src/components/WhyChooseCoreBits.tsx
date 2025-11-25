@@ -161,6 +161,7 @@ export default function WhyChooseCoreBits() {
           </p>
         </motion.div>
 
+
         {/* Cards Grid */}
         <motion.div
           initial="hidden"
