@@ -77,4 +77,3 @@ export default function TransparencyLegal({ locale }: { locale: Locale }) {
     </section>
   );
 }
-
