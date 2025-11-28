@@ -7,6 +7,7 @@ export default function FloatingIcons() {
     { label: 'ETH', x: 70, y: 30, delay: 0.2 },
     { label: 'USDT', x: 40, y: 70, delay: 0.4 },
   ];
+  
   return (
     <div className="absolute inset-0 pointer-events-none select-none">
       {items.map((it) => (
