@@ -49,6 +49,8 @@ function InteractiveMap({ onRegionClick }: { onRegionClick?: (id: string) => voi
   );
 }
 
+
+
 export default function WhyChooseCoreBits() {
   const fadeUpVariants = {
     hidden: { opacity: 0, y: 30 },
