@@ -144,4 +144,3 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
   );
 }
 // moved to client component
-
