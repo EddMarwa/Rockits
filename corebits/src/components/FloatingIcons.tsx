@@ -9,7 +9,6 @@ export default function FloatingIcons() {
   ];
 
 
-  
   return (
     <div className="absolute inset-0 pointer-events-none select-none">
       {items.map((it) => (
