@@ -63,6 +63,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
           </div>
         </section>
 
+
         <section id="about">
           <h2 className="text-2xl font-semibold mb-4">Why Choose CoreBits?</h2>
           <FeaturesGrid items={[dict.features.secure, dict.features.daily, dict.features.registered, dict.features.global]} />
