@@ -6,6 +6,5 @@ export default function ParticleToggle(): null {
   // The toggle UI was removed; particles
   // are now controlled via URL params and prefers-reduced-motion.
   return null;
-  
 }
 
